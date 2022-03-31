@@ -33,7 +33,6 @@ const PartnersPage = () => {
 const partnersArray = Object.entries(partners);
 
   const goToPartner = (url) => () => {
-    console.log('haaaaah', url)
     window.open(url, '_blank');
   }
 

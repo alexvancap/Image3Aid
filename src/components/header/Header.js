@@ -7,7 +7,7 @@ const Container = styled.div`
 `;
 
 const Logo = styled.img`
-  height: 170px;
+  height: 100px;
   padding-top: 30px;
   padding-right: 30px;
   object-fit: cover;

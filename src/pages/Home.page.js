@@ -27,6 +27,7 @@ const DescInnerCont = styled.div`
 
 const TextCont = styled.div`
   max-width: 300px;
+  text-align: center;
 `;
 
 const SocialButtons = styled.div`
