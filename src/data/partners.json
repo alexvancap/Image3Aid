@@ -1,0 +1,38 @@
+{
+  "ART3": {
+    "name": "ART3",
+    "imgType": "png"
+  },
+  "assembly": {
+    "name": "assembly",
+    "imgType": "jpg"
+  },
+  "featureshoot": {
+    "name": "featureshoot",
+    "imgType": "jpg"
+  },
+  "fellowship": {
+    "name": "fellowship",
+    "imgType": "jpg"
+  },
+  "kgpnft": {
+    "name":"kgpnft",
+    "imgType": "png"
+  },
+  "nftPhotographers": {
+    "name": "nft photographers",
+    "imgType": "jpg"
+  },
+  "Obscura": {
+    "name": "Obscura",
+    "imgType": "png"
+  },
+  "photoverso": {
+    "name": "photoverso",
+    "imgType": "jpg"
+  },
+  "untitled": {
+    "name": "untitled",
+    "imgType": "jpg"
+  }
+}
