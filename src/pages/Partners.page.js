@@ -44,7 +44,6 @@ const PartnersPage = () => {
       <Container>
         {
           partnersArray.map(partner => {
-            console.log('`/logos/${partner[0]}.${partner[1].imgType}`', `/logos/${partner[0]}.${partner[1].imgType}`)
             return(
             <PartnerCont
               key={`partnerImage: ${partner[1].name}`}

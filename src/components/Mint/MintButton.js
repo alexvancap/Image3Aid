@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 // import { connectWallet, getCurrentWalletConnected, mintNFT } from '../../helperFunctions';
-import { connectWallet, getCurrentWalletConnected, askContractToMintNft } from '../../helperFunctions';
+import { connectWallet, askContractToMintNft } from '../../helperFunctions';
 
 
 import Modal from '@material-ui/core/Modal';
@@ -62,7 +62,7 @@ const modalCont = {
 const MintButton = () => {
   const [walletAdress, setWallet] = useState(null);
   const [modalIsOpen, setModalOpen] = useState(false);
-  const [status, setStatus] = useState('');
+  // const [status, setStatus] = useState('');
 
   // const getCurrentWallet = async () => {
   //   const { address, status } = await getCurrentWalletConnected();
@@ -78,37 +78,37 @@ const MintButton = () => {
 
   const connectWalletPressed = async () => {
     const walletResponse = await connectWallet()
-    setStatus(walletResponse.status)
+    // setStatus(walletResponse.status)
     setWallet(walletResponse.address)
   }
 
-  const addWalletListener = () => {
-    if (window.ethereum) {
-      window.ethereum.on("accountsChanged", (accounts) => {
-        if (accounts.length > 0) {
-          setWallet(accounts[0])
-          setStatus("👆🏽 Write a message in the text-field above.")
-        } else {
-          setWallet("")
-          setStatus("🦊 Connect to MetaMask using the top right button.")
-        }
-      })
-    } else {
-      setStatus(
-        <p>
-          {" "}
-          🦊 <a target="_blank" href={`https://metamask.io/download.html`} rel='noreferrer'>
-            You must install MetaMask, a virtual Ethereum wallet, in your browser.
-          </a>
-        </p>
-      )
-    }
-  }
+  // const addWalletListener = () => {
+  //   if (window.ethereum) {
+  //     window.ethereum.on("accountsChanged", (accounts) => {
+  //       if (accounts.length > 0) {
+  //         setWallet(accounts[0])
+  //         setStatus("👆🏽 Write a message in the text-field above.")
+  //       } else {
+  //         setWallet("")
+  //         setStatus("🦊 Connect to MetaMask using the top right button.")
+  //       }
+  //     })
+  //   } else {
+  //     setStatus(
+  //       <p>
+  //         {" "}
+  //         🦊 <a target="_blank" href={`https://metamask.io/download.html`} rel='noreferrer'>
+  //           You must install MetaMask, a virtual Ethereum wallet, in your browser.
+  //         </a>
+  //       </p>
+  //     )
+  //   }
+  // }
 
   const toggleModal = () => setModalOpen(!modalIsOpen);
 
   const onMintPressed = async () => {
-    const res = await askContractToMintNft();
+     await askContractToMintNft();
   }
 
 

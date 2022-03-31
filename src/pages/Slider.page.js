@@ -39,6 +39,14 @@ const SliderPage = () => {
 
   const imageArray = Object.entries(images);
 
+  const hideSliderNav = (key) => {
+    if(key === 'BottomCenter'){ 
+      return {
+        display: 'none'
+      }
+    }
+  }
+
   return (
     <Container height={windowHeight}>
 
@@ -46,14 +54,7 @@ const SliderPage = () => {
         autoplay
         autoplayInterval={3000}
         wrapAround
-        getControlsContainerStyles={(key) => {
-          if(key === 'BottomCenter'){ 
-            return {
-              display: 'none'
-            }
-          }
-        }}
-        
+        getControlsContainerStyles={hideSliderNav}
       >
         {
           imageArray.map(image => (
