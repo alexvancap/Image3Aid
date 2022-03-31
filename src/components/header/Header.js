@@ -8,9 +8,11 @@ const Container = styled.div`
 
 const Logo = styled.img`
   height: 170px;
-  padding-top: 20px;
-  padding-left: 20px;
+  padding-top: 30px;
+  padding-right: 30px;
   object-fit: cover;
+  position: absolute;
+  right: 0;
 
   &:hover {
     cursor: pointer;

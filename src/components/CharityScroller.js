@@ -66,7 +66,7 @@ const CharityScroller = () => {
       <Container>
         <CharityWrapper>
           {charities.map(charity => { 
-            return `, &nbsp; ${charity}` 
+            return `, ${charity}` 
           })}
         </CharityWrapper>
  

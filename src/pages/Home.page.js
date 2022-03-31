@@ -33,7 +33,7 @@ const SocialButtons = styled.div`
   max-width: 250px;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin: 20px auto 0 auto;
 `;
 
 const InfoCont = styled.div`
