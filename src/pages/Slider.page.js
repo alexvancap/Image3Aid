@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const SlideCont = styled.div`
   height: ${props => props.height}px;
-  width: 100%;
+  width: ${props => props.width};
   
   background: ${props => `url('/images/${props.imagename}.jpg')`};
   background-position: center;
@@ -34,7 +34,7 @@ const PhotographerName = styled(H2)`
   z-index: 5;
 `;
 
-const SliderPage = ({width}) => {
+const SliderPage = ({}) => {
   const { height: windowHeight } = useWindowDimensions();
 
   const imageArray = Object.entries(images);
@@ -48,7 +48,7 @@ const SliderPage = ({width}) => {
   }
 
   return (
-    <Container height={ width || windowHeight}>
+    <Container height={windowHeight}>
       <Carousel 
         autoplay
         autoplayInterval={3000}

@@ -59,7 +59,7 @@ const PageWithImage = ({ children, imageIsLeft=true, src, alt, title, titleStyle
         imageIsLeft
         ? (
           <>
-            {slider ? <SliderPage /> : <Image src={src} alt={alt} />}
+            {slider ? <SliderPage halfWith /> : <Image src={src} alt={alt} />}
             {childrenWithWrapper}
           </>
         )
@@ -67,7 +67,7 @@ const PageWithImage = ({ children, imageIsLeft=true, src, alt, title, titleStyle
           <>
             {childrenWithWrapper}
             {slider 
-              ? <SliderPage />
+              ? <SliderPage width="50%" halfWith/>
               : <Image src={src} alt={alt} />
             }
           </>

@@ -48,7 +48,6 @@ const Photographers = () => {
       src='/images/BarbaraDavidson.jpg'
       alt="Image made by Marshall Scheuttle"
       title="Photographers"
-      slider
     >
       <PhotographerList>
         <PhotographerRow>
