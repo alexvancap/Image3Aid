@@ -70,6 +70,9 @@ const TopInfoCont = styled.div`
   background-color: ${props => props.color};
 `;
 
+
+
+
 const HomePage = () => {
   const { height: windowHeight } = useWindowDimensions();
   return (
@@ -78,8 +81,8 @@ const HomePage = () => {
         <DescInnerCont>
           <TextCont>
             <H1>Imag3Aid</H1>
-            <H2>Random title idk</H2>
-            <Text>Text that would look nice if its more than this, right? Should this be smaller text?</Text>
+            <H2>56 Photographers, One Cause</H2>
+            <Text>100% of proceeds donated to Ukrainian Emergency Relief Fund</Text>
           </TextCont>
 
           <SocialButtons>

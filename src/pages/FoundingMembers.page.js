@@ -33,9 +33,9 @@ const FounderText = styled.div`
 
 const founders = [
   { name: 'Gregory Eddi Jones', url: 'https://twitter.com/EddiJonesNFT' },
-  {  name: 'Wim Van Capellen', url: 'https://twitter.com/WimVanCappellen' },
-  {  name: 'Taimazz', url: 'https://twitter.com/taiimazz' },
-  {  name: 'Zak Krevit', url: 'https://twitter.com/zak_krevitt' },
+  {  name: 'Wim Van Cappellen', url: 'https://twitter.com/WimVanCappellen' },
+  {  name: 'Taimaz', url: 'https://twitter.com/taiimazz' },
+  {  name: 'Zak Krevitt', url: 'https://twitter.com/zak_krevitt' },
   {  name: 'Richard Pilnick', url: 'https://twitter.com/richardpilnick' },
   {  name: 'Hugo Faz', url: 'https://twitter.com/HugoFaz' },
   {  name: 'Maciej Miliszkiewicz', url: 'https://twitter.com/MMiliszkiewicz' },
@@ -44,7 +44,7 @@ const founders = [
   {  name: 'Mickey Smith', url: 'https://twitter.com/MickeySmithArt' },
   {  name: 'Mehdi Benembarek', url: 'https://twitter.com/MehdiBenembarek' },
   {  name: 'Bozo (back-end developer)', url: 'https://twitter.com/bozo_eth' },
-  {  name: 'Alex (front-end developer)', url: '' }
+  {  name: 'Alex (front-end developer)', url: 'https://twitter.com/WimVanCappellen' }
 ]
 
 const divideFoundersIn2Rows = () => {
@@ -85,6 +85,7 @@ const FoundingMembersPage = () => {
             return (
               <Row key={`rowWithFirstFounder ${rowWithFounders[0].name}`}>
                 {
+                  
                   rowWithFounders.map(founder => (
                     <FounderText 
                       key={`founderText: ${founder.name}`} 

@@ -19,14 +19,10 @@ const Logo = styled.img`
   }
 `;
 
-const handleLogoPress = () => {
-  window.open('https://facebook.com', '_blank');
-}
-
 const Header = () => {
   return (
     <Container>
-      <Logo onClick={handleLogoPress} src='/logos/logo.png' />
+      <Logo src='/logos/logo.png' />
     </Container>
   )
 };

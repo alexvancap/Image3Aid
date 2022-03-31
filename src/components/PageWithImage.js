@@ -33,6 +33,7 @@ const ChildrenWrapper = styled.div`
   align-items: center;
   width: 50%;
   height: 100%;
+  padding-top: ${props => props.paddingTop || 0}px;
 `;
 
 const Title = styled(H1)`
@@ -42,13 +43,11 @@ const Title = styled(H1)`
 
 
 
-const PageWithImage = ({ children, imageIsLeft=true, src, alt, title, titleStyle, slider=false}) => {
+const PageWithImage = ({ children, imageIsLeft=true, src, alt, title, titleStyle, slider=false, paddingTop}) => {
   const { height: windowHeight } = useWindowDimensions()
 
-
-  console.log('huuuuuh', imageIsLeft && windowHeight <= 1000)
   const childrenWithWrapper = (
-    <ChildrenWrapper>
+    <ChildrenWrapper paddingTop={paddingTop}>
       <Title style={titleStyle}>{title}</Title>
       {children}
     </ChildrenWrapper>
