@@ -28,6 +28,10 @@ const InfoLine = styled.div`
 
 const LinkInText = styled.div`
   text-decoration: underline;
+
+  &:hover { 
+    cursor: pointer;
+  }
 `;
 
 const PageContentCont = styled.div`
@@ -36,8 +40,9 @@ const PageContentCont = styled.div`
   align-items: center;
   flex-direction: column;
   width: 80%;
-  height: ${props => props.height}px;
+  min-height: ${props => props.height}px;
   margin: 0 auto;
+  
   /* margin: 50px auto 50px auto; */
 
 `;
@@ -46,6 +51,11 @@ const FlexCont = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
+
+  @media only screen and (max-width: 1000px){
+    flex-direction: column;
+  }
+
 `;
 
 const GivingBlockWrapper = styled.div`
@@ -85,21 +95,19 @@ const SocialCont = styled.div`
   align-items: center;
 `;
 
-const goToGivingBlock = () => {
-  window.open( 
-    "https://thegivingblock.com/campaigns/ukraine-emergency-response-fund/", "_blank"
-  );
-}
-
 const GivingBlockPage = () => {
   const { height: windowHeight } = useWindowDimensions();
+
+  const goToGivingBlock = () => {
+    window.open('https://thegivingblock.com/campaigns/ukraine-emergency-response-fund/', '_blank');
+  }
   return (
     <Container height={windowHeight}>
       <InfoLine backgroundColor='#0057B7'>
-        100% of proceedes donated to Humanitarian Aid
+        100% of proceeds  donated to Humanitarian Aid
       </InfoLine>
       <InfoLine width='100%' backgroundColor='#FFDD00' color="black">
-        See &nbsp;<LinkInText>{` all projects `}</LinkInText>&nbsp; receiving aid through the distributed fund
+        See&nbsp;<LinkInText onClick={goToGivingBlock}>{` all projects `}</LinkInText>&nbsp;receiving aid through the distributed fund
       </InfoLine>
       <PageContentCont variant='outlined' height={windowHeight}>
         <FlexCont height={windowHeight / 2}>
@@ -114,8 +122,6 @@ const GivingBlockPage = () => {
             </SocialCont>
           </GivingBlockWrapper>
         </FlexCont>
-
-        
       </PageContentCont>
     </Container>
   )

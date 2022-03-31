@@ -3,14 +3,16 @@ import styled from "styled-components";
 import PageWithImage from "../components/PageWithImage";
 
 const Container = styled.div`
-  width: 100%;
+  width: 90%;
   height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   line-height: 30px;
-  margin-top: 50px;
+  margin-top: 80px;
+  margin-left: 10%;
+  /* margin-left: 80px; */
 `;
 
 const Row = styled.div`
@@ -22,7 +24,6 @@ const FounderText = styled.div`
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
   font-size: 18px;
-  text-align: center;
 
   &:hover{
     cursor: pointer;
@@ -35,7 +36,7 @@ const founders = [
   {  name: 'Wim Van Capellen', url: 'https://twitter.com/WimVanCappellen' },
   {  name: 'Taimazz', url: 'https://twitter.com/taiimazz' },
   {  name: 'Zak Krevit', url: 'https://twitter.com/zak_krevitt' },
-  {  name: 'Richard Pilnik', url: 'https://twitter.com/richardpilnick' },
+  {  name: 'Richard Pilnick', url: 'https://twitter.com/richardpilnick' },
   {  name: 'Hugo Faz', url: 'https://twitter.com/HugoFaz' },
   {  name: 'Maciej Miliszkiewicz', url: 'https://twitter.com/MMiliszkiewicz' },
   {  name: 'Amy Li', url: 'https://twitter.com/amy_li' },
@@ -43,8 +44,7 @@ const founders = [
   {  name: 'Mickey Smith', url: 'https://twitter.com/MickeySmithArt' },
   {  name: 'Mehdi Benembarek', url: 'https://twitter.com/MehdiBenembarek' },
   {  name: 'Bozo (back-end developer)', url: 'https://twitter.com/bozo_eth' },
-  {  name: 'Jonas (front-end developer)', url: 'https://jonas.vip/' },
-  // {  name: 'Alex (front-end developer)', url: '' }
+  {  name: 'Alex (front-end developer)', url: '' }
 ]
 
 const divideFoundersIn2Rows = () => {
@@ -94,9 +94,9 @@ const FoundingMembersPage = () => {
                   ))
                 }
               </Row>
-            );
+            )
           })
-        };
+        }
       </Container>
     </PageWithImage>
 

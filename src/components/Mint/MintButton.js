@@ -11,9 +11,11 @@ import { H2 } from './../../framework';
 
 const MainButton = styled.div`
   border-radius: 20px;
-  background-color: #FFDD00;
-  color: black;
+  background-color: ${props => props.color || '#FFDD00'};
+  color: ${props => props.textColor || 'black'};
   padding: 15px 35px 15px 35px;
+  margin-top: 10px;
+  text-align: center;
 
   font-size: 14px;
 
@@ -57,6 +59,10 @@ const modalCont = {
   boxShadow: 24,
   p: 4,
 };
+
+const ButtonWrapper = styled.div`
+  flex-direction: column;
+`;
 
 
 const MintButton = () => {
@@ -114,7 +120,21 @@ const MintButton = () => {
 
   return (
     <>
-      <MainButton onClick={toggleModal}>Press here to mint!</MainButton>
+      <ButtonWrapper>
+        <MainButton 
+          onClick={connectWalletPressed} 
+          textColor="white" color="#0057B7"
+          disabled={walletAdress}
+        >
+          {walletAdress ? `connected with: ${walletAdress}` : 'Connect Wallet'}
+        </MainButton>
+        <MainButton 
+          onClick={toggleModal}
+        >
+          Press here to mint!
+        </MainButton>
+      </ButtonWrapper>
+
       <Modal
         open={modalIsOpen}
         onClose={toggleModal}

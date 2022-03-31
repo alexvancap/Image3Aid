@@ -1,38 +1,47 @@
 {
   "ART3": {
     "name": "ART3",
-    "imgType": "png"
+    "imgType": "png",
+    "url": "https://art3.io/"
   },
   "assembly": {
     "name": "assembly",
-    "imgType": "jpg"
+    "imgType": "jpg",
+    "url": "https://assembly.art/"
   },
   "featureshoot": {
     "name": "featureshoot",
-    "imgType": "jpg"
+    "imgType": "jpg",
+    "url": "https://www.featureshoot.com/"
   },
   "fellowship": {
     "name": "fellowship",
-    "imgType": "jpg"
+    "imgType": "jpg",
+    "url": "https://fellowshipdao.com/"
   },
   "kgpnft": {
     "name":"kgpnft",
-    "imgType": "png"
+    "imgType": "png",
+    "url": "https://www.kgpnft.com/"
   },
   "nftPhotographers": {
     "name": "nft photographers",
-    "imgType": "jpg"
+    "imgType": "jpg",
+    "url": "https://nftphotographers.xyz/"
   },
   "Obscura": {
     "name": "Obscura",
-    "imgType": "png"
+    "imgType": "png",
+    "url": "https://obscura.io/"
   },
   "photoverso": {
     "name": "photoverso",
-    "imgType": "jpg"
+    "imgType": "jpg",
+    "url": "https://www.photoverso.io/"
   },
   "untitled": {
     "name": "untitled",
-    "imgType": "jpg"
+    "imgType": "jpg",
+    "url": "https://untitledartfairs.com/"
   }
 }

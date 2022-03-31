@@ -24,9 +24,13 @@ const Photographers = () => {
   const imageArray = Object.entries(images);
 
   const row1 = [], row2 = [], row3 = [];
-  let nextRowToPushTo = 1
+  let nextRowToPushTo = 1;
 
-  imageArray.forEach(image => {
+  const sortedImages = imageArray.sort((img, nextImg) => {
+    return img[0] < nextImg[0] ? -1 : 1
+  });
+
+  sortedImages.forEach(image => {
     if(nextRowToPushTo === 1){
       row1.push(image[1]);
       nextRowToPushTo++
@@ -56,7 +60,6 @@ const Photographers = () => {
               </Photographer>
             ))
           }
-
         </PhotographerRow>
         <PhotographerRow>
         {

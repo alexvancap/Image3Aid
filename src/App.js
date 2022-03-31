@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import './index.css'
+import './index.css';
 
 import HomePage from './pages/Home.page';
 import Header from './components/header/Header'
@@ -10,7 +10,6 @@ import Photographers from './pages/Photographers.page';
 import PartnersPage from './pages/Partners.page';
 import FoundingMembersPage from './pages/FoundingMembers.page';
 import GivingBlockPage from './pages/GivingBlock.page';
-
 
 const Container = styled.div`
   position: absolute;
@@ -38,23 +37,21 @@ const PaddingCont = styled.div`
 
 function App() {
   return (
-    <>
-      <Container>
-        <HomeCont>
-          <Header />
-          <HomePage />
-        </HomeCont>
-        <SliderPage />
-        <PaddingCont>
-          <AboutPage />
-          <Photographers />
-          <PartnersPage />
-          <FoundingMembersPage />
-          <GivingBlockPage />
-        </PaddingCont>
-      </Container>
-    </>
-  );
+    <Container>
+      <HomeCont>
+        <Header />
+        <HomePage />
+      </HomeCont>
+      <SliderPage />
+      <PaddingCont>
+        <AboutPage />
+        <Photographers />
+        <PartnersPage />
+        <FoundingMembersPage />
+        <GivingBlockPage />
+      </PaddingCont>
+    </Container>
+  )
 }
 
 export default App;

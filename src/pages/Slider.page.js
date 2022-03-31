@@ -49,7 +49,6 @@ const SliderPage = () => {
 
   return (
     <Container height={windowHeight}>
-
       <Carousel 
         autoplay
         autoplayInterval={3000}

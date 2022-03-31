@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import PageWithImage from "../components/PageWithImage";
 import partners from './../data/partners.json';
 
-const partnersArray = Object.entries(partners);
-
 const Container = styled.div`
   width: 80%;
   height: 70%;
@@ -19,10 +17,10 @@ const PartnerCont = styled.div`
   height: 33.3333%;
   padding: 30px;
 
-  /* &:hover{
+  &:hover{
     opacity: 0.7;
     cursor: pointer;
-  } */
+  }
 `;
 
 const PartnerImage = styled.img`
@@ -32,6 +30,12 @@ const PartnerImage = styled.img`
 `;
 
 const PartnersPage = () => {
+const partnersArray = Object.entries(partners);
+
+  const goToPartner = (url) => () => {
+    console.log('haaaaah', url)
+    window.open(url, '_blank');
+  }
 
 
   return(
@@ -46,6 +50,7 @@ const PartnersPage = () => {
           partnersArray.map(partner => {
             return(
             <PartnerCont
+              onClick={goToPartner(partner[1].url)}
               key={`partnerImage: ${partner[1].name}`}
             >
               <PartnerImage

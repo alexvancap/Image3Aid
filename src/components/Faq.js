@@ -11,12 +11,20 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 const Container = styled.div`
-  width: 100%;
+  width: 70%;
+
+  @media only screen and (max-width: 1000px){
+    width: 60%;
+  }
 `;
 
 const FaqTitle = styled(H1)`
   text-align: center;
   margin-bottom: 20px;
+  margin-top: 40px;
+  @media only screen and (max-width: 700px){
+    margin-top: 40px;
+  }
 `;
 
 const questionsAndAnswers = [

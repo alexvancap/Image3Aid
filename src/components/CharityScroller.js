@@ -38,33 +38,57 @@ const charities = [
 ]
 
 const CharityText = styled.div`
-  width: 100%;
   height: 30px;
 `;
 
+const CharityWrapper = styled.marquee`
+  height: 40px;
+  line-height: 40px;
+  white-space: nowrap;
+`;
+
 const AnimatedCont = styled.div`
-  margin-top: 900px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 `;
 
 const CharityScroller = () => {
   const styles = useSpring({
-    from: { transform: "translateY(0%)" },
-    to: [
-      { transform: "translateY(-50%)" },
-      { transform: "translateY(0%)"},
-    ],
-    config: { duration: "50000" },
-    loop:true
+    // from: { transform: "translateY(0%)" },
+    // to: [
+    //   { transform: "translateY(-50%)" },
+    //   { transform: "translateY(0%)"},
+    // ],
+    // config: { duration: "50000" },
+    // loop:true
   });
 
+  const getCharityString = () => {
+    let string = '';
+    charities.forEach((charity, index) => {
+      if(index !== 0 && index !== charities.length -1){
+        return string += `, ${ charity }`
+      }
+      string += ` ${charity}`
+    })
+    return string;
+  }
+
+  console.log('huuuuuuh',getCharityString())
+
   return (
-    <animated.div style={styles}>
+    // <animated.div style={styles}>
       <AnimatedCont>
-        {charities.map(charity => (
-          <CharityText key={`charity: ${charity}`}>{charity}</CharityText>
-        ))}
+        <CharityWrapper>
+          {/* {getCharityString()} */}
+          {charities.map(charity => { 
+            return `, \n \r ${charity}` 
+          })}
+        </CharityWrapper>
+ 
       </AnimatedCont>
-    </animated.div>
+    // </animated.div>
   );
 };
 

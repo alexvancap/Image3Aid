@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import useWindowDimensions from '../hooks/useWindowDimensions';
@@ -43,7 +43,6 @@ const InfoCont = styled.div`
   height: 80px;
   background-color: red;
   box-shadow: 1px -3px 33px -12px rgba(0,0,0,0.5);
-  
 `;
 
 const InfoLine = styled.div`
@@ -71,6 +70,7 @@ const TopInfoCont = styled.div`
 `;
 
 const HomePage = () => {
+  const [wallet, setWallet] = useState('');
   const { height: windowHeight } = useWindowDimensions();
   return (
     <Container height={windowHeight || 0}>
@@ -92,18 +92,18 @@ const HomePage = () => {
       <InfoCont>
         <TopInfoCont color='#0057B7'>
           <InfoLine width='40%'>
-            Mint Date: April 11th - Noon EST
+            .05eth | 50 editions per image
             <SmallInfoLineText>
-              .05 Eth / 50 Editions per image - blind mint from a collection of 2800 total
+              Blind mint from a collection of 5000 total
             </SmallInfoLineText>
           </InfoLine>
           <InfoLine width='20%'>
             Minting has started
           </InfoLine>
           <InfoLine width='40%'>
-            .05eth | 100 editions per image
+            Mint Date: April 11th - Noon EST
             <SmallInfoLineText>
-              Blind mint from a collection of 5000 total
+              .05 Eth / 50 Editions per image - blind mint from a collection of 2800 total
             </SmallInfoLineText>
           </InfoLine>
         </TopInfoCont>
