@@ -59,7 +59,7 @@ const PageWithImage = ({ children, imageIsLeft=true, src, alt, title, titleStyle
         imageIsLeft
         ? (
           <>
-            <Image src={src} alt={alt} />
+            {slider ? <SliderPage /> : <Image src={src} alt={alt} />}
             {childrenWithWrapper}
           </>
         )

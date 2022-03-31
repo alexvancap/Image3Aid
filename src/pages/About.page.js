@@ -4,11 +4,6 @@ import styled from 'styled-components';
 import { Text } from '../framework';
 import PageWithImage from '../components/PageWithImage';
 
-const Container = styled.div`
-
-  margin-top: -20px;
-`;
-
 const AboutText = styled(Text)`
   width: 80%;
   align-self: center;

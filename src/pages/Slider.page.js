@@ -34,7 +34,7 @@ const PhotographerName = styled(H2)`
   z-index: 5;
 `;
 
-const SliderPage = () => {
+const SliderPage = ({width}) => {
   const { height: windowHeight } = useWindowDimensions();
 
   const imageArray = Object.entries(images);
@@ -48,7 +48,7 @@ const SliderPage = () => {
   }
 
   return (
-    <Container height={windowHeight}>
+    <Container height={ width || windowHeight}>
       <Carousel 
         autoplay
         autoplayInterval={3000}
