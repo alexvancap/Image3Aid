@@ -97,7 +97,7 @@ const MintButton = () => {
   //     setStatus(
   //       <p>
   //         {" "}
-  //         🦊 <a target="_blank" href={`https://metamask.io/download.html`} rel='noreferrer'>
+  //         🦊 <a target="_blank" rel="noreferrer" href={`https://metamask.io/download.html`} rel='noreferrer'>
   //           You must install MetaMask, a virtual Ethereum wallet, in your browser.
   //         </a>
   //       </p>
