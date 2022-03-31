@@ -1,8 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
 
-import { useSpring, animated } from 'react-spring';
-
 const charities = [
   'Lutheran World Relief',
   'Lawyers for Good Government (L4GG)',
@@ -35,11 +33,7 @@ const charities = [
   'World Central Kitchen',
   'Save the Children',
   'Hearts & Homes for Refugees',
-]
-
-const CharityText = styled.div`
-  height: 30px;
-`;
+];
 
 const CharityWrapper = styled.marquee`
   height: 40px;
@@ -47,22 +41,13 @@ const CharityWrapper = styled.marquee`
   white-space: nowrap;
 `;
 
-const AnimatedCont = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 `;
 
 const CharityScroller = () => {
-  const styles = useSpring({
-    // from: { transform: "translateY(0%)" },
-    // to: [
-    //   { transform: "translateY(-50%)" },
-    //   { transform: "translateY(0%)"},
-    // ],
-    // config: { duration: "50000" },
-    // loop:true
-  });
 
   const getCharityString = () => {
     let string = '';
@@ -78,17 +63,14 @@ const CharityScroller = () => {
   console.log('huuuuuuh',getCharityString())
 
   return (
-    // <animated.div style={styles}>
-      <AnimatedCont>
+      <Container>
         <CharityWrapper>
-          {/* {getCharityString()} */}
           {charities.map(charity => { 
-            return `, \n \r ${charity}` 
+            return `, &nbsp; ${charity}` 
           })}
         </CharityWrapper>
  
-      </AnimatedCont>
-    // </animated.div>
+      </Container>
   );
 };
 

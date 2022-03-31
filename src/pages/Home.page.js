@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import useWindowDimensions from '../hooks/useWindowDimensions';
@@ -70,7 +70,6 @@ const TopInfoCont = styled.div`
 `;
 
 const HomePage = () => {
-  const [wallet, setWallet] = useState('');
   const { height: windowHeight } = useWindowDimensions();
   return (
     <Container height={windowHeight || 0}>
