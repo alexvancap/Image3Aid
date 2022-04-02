@@ -49,17 +49,6 @@ const Container = styled.div`
 
 const CharityScroller = () => {
 
-  const getCharityString = () => {
-    let string = '';
-    charities.forEach((charity, index) => {
-      if(index !== 0 && index !== charities.length -1){
-        return string += `, ${ charity }`
-      }
-      string += ` ${charity}`
-    })
-    return string;
-  }
-
   return (
       <Container>
         <CharityWrapper>
