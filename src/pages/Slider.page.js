@@ -44,9 +44,7 @@ const SliderPage = ({halfWidth=false, showSelection=false}) => {
     "MarilynHuecopy": "Marilyn Hue",
     "MishadeRidder": "Misha de Ridder",
     "NadineBauer": "Nadine Bauer",
-    "PenelopeUmbrico": "Penelope Umbrico",
     "IsraelRiqueros": "Israel Riqueros",
-
   };
 
 
