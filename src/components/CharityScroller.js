@@ -60,13 +60,14 @@ const CharityScroller = () => {
     return string;
   }
 
-  console.log('huuuuuuh',getCharityString())
-
   return (
       <Container>
         <CharityWrapper>
-          {charities.map(charity => { 
-            return `, ${charity}` 
+          {charities.map((charity, index) => { 
+            if(index !== 0 && index !== charities.length){
+              return `, ${charity}`;
+            }
+            return ` ${charity}`;
           })}
         </CharityWrapper>
  

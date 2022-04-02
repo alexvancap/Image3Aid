@@ -10,34 +10,48 @@ import { H2 } from "../framework";
 const Container = styled.div`
   display: block;
   height: ${props => props.height}px;
-  width: 100%;
+  max-width: ${props => props.halfWidth ? '50%' : '100%'};
 `;
 
 const SlideCont = styled.div`
   height: ${props => props.height}px;
-  width: ${props => props.width};
+  width: 100%;
   
   background: ${props => `url('/images/${props.imagename}.jpg')`};
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: ${props => props.halfWidth ? 'contain' : 'cover'};
 `;
 
 const PhotographerName = styled(H2)`
   align-self: flex-end;
   float: right;
   margin: 40px;
-  padding: 20px;
+  padding: 10px;
   border-radius: 5px;
   color: aliceblue;
   background-color: rgb(0, 0, 0, 0.3);
   z-index: 5;
 `;
 
-const SliderPage = ({}) => {
+const SliderPage = ({halfWidth=false, showSelection=false}) => {
   const { height: windowHeight } = useWindowDimensions();
 
-  const imageArray = Object.entries(images);
+  const imageSelection = {
+    "AlessandraSanguinetti": "Alessandra Sanguinetti",
+    "DavidBrandonGeeting": "David Brandon Geeting",
+    "DavidGuttenfelder": "David Guttenfelder",
+    "MarilynHuecopy": "Marilyn Hue",
+    "MishadeRidder": "Misha de Ridder",
+    "NadineBauer": "Nadine Bauer",
+    "PenelopeUmbrico": "Penelope Umbrico",
+    "IsraelRiqueros": "Israel Riqueros",
+
+  };
+
+
+  const jsonImages = showSelection ?  imageSelection : images; 
+  const imageArray = Object.entries(jsonImages);
 
   const hideSliderNav = (key) => {
     if(key === 'BottomCenter'){ 
@@ -48,7 +62,7 @@ const SliderPage = ({}) => {
   }
 
   return (
-    <Container height={windowHeight}>
+    <Container height={windowHeight} halfWidth={halfWidth}>
       <Carousel 
         autoplay
         autoplayInterval={3000}
@@ -57,7 +71,7 @@ const SliderPage = ({}) => {
       >
         {
           imageArray.map(image => (
-            <SlideCont key={image[0]} imagename={image[0]} height={windowHeight}>
+            <SlideCont key={image[0]} imagename={image[0]} height={windowHeight} halfWidth={halfWidth}>
               <PhotographerName>{image[1]}</PhotographerName>
             </SlideCont>
           ))

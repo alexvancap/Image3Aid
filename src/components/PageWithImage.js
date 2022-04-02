@@ -11,15 +11,12 @@ const Container = styled.div`
   flex-direction: row;
   height: ${props => props.height}px;
   width: 100%;
-
-
 `;
 
 const Image = styled.img`
   width: 50%;
   height: 100%;
   object-fit: cover;
-
   /* @media only screen and (max-width: 1000px){
     width: 100%;
     height: auto;
@@ -43,9 +40,11 @@ const Title = styled(H1)`
 
 
 
-const PageWithImage = ({ children, imageIsLeft=true, src, alt, title, titleStyle, slider=false, paddingTop}) => {
+
+const PageWithImage = ({  showSelection=false, children, imageIsLeft=true, src, alt, title, titleStyle, slider=false, paddingTop}) => {
   const { height: windowHeight } = useWindowDimensions()
 
+  console.log('haaaaah', showSelection)
   const childrenWithWrapper = (
     <ChildrenWrapper paddingTop={paddingTop}>
       <Title style={titleStyle}>{title}</Title>
@@ -59,7 +58,7 @@ const PageWithImage = ({ children, imageIsLeft=true, src, alt, title, titleStyle
         imageIsLeft
         ? (
           <>
-            {slider ? <SliderPage halfWith /> : <Image src={src} alt={alt} />}
+            {slider ? <SliderPage showSelection={showSelection} halfWidth /> : <Image src={src} alt={alt} />}
             {childrenWithWrapper}
           </>
         )
@@ -67,7 +66,7 @@ const PageWithImage = ({ children, imageIsLeft=true, src, alt, title, titleStyle
           <>
             {childrenWithWrapper}
             {slider 
-              ? <SliderPage width="50%" halfWith/>
+              ? <SliderPage showSelection={showSelection} halfWidth halfWith/>
               : <Image src={src} alt={alt} />
             }
           </>

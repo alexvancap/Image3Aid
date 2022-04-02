@@ -13,10 +13,6 @@ const Logo = styled.img`
   object-fit: cover;
   position: absolute;
   right: 0;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 const Header = () => {

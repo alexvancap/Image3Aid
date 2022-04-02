@@ -7,7 +7,7 @@ import PageWithImage from '../components/PageWithImage';
 const AboutText = styled(Text)`
   width: 80%;
   align-self: center;
-  text-align: center;
+  text-align: left;
   line-height: 23px;
 `;
 
@@ -22,11 +22,12 @@ const AboutPage = () => {
         alt="Image of Richard Pilnick"
         title="About"
         imageIsLeft={false}
+        showSelection
       >
         <AboutText>
           Imag3Aid was formed by a group of photographers in the NFT community in the days following Russia’s invasion of Ukraine. 
           We came together to support Ukrainians whose lives and livelihoods have been imperiled by this war. 
-          Imag3Aid’s NFT collection will be comprised of 56 works from some of the most prominent photographers in the NFT space. 
+          Imag3Aid’s NFT collection will be comprised of 7 works from some of the most prominent photographers in the NFT space. 
           <br />
           <br />
           These works will be available to mint as editions of 50, <br /> available to collectors for .05 ETH each. 

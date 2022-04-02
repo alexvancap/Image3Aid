@@ -42,7 +42,7 @@ function App() {
         <Header />
         <HomePage />
       </HomeCont>
-      <SliderPage />
+      <SliderPage showSelection={true} />
       <PaddingCont>
         <AboutPage />
         <Photographers />

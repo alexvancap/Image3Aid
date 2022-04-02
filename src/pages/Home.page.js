@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import useWindowDimensions from '../hooks/useWindowDimensions';
 
-import { H1, H2, Text } from '../framework';
+import { H1, H2, Text, SocialButton } from '../framework';
 import CharityScroller from '../components/CharityScroller';
-import MintButton from '../components/Mint/MintButton'
+import Countdown from 'react-countdown';
 
 const Container = styled.div`
   height: ${props => props.height - 100}px; //for header
@@ -70,43 +70,57 @@ const TopInfoCont = styled.div`
   background-color: ${props => props.color};
 `;
 
-
-
-
 const HomePage = () => {
   const { height: windowHeight } = useWindowDimensions();
+
+  const goToSocials = (route) => () => {
+    window.open(route, '_blank')
+  }
   return (
     <Container height={windowHeight || 0}>
       <DescOuterCont>
         <DescInnerCont>
           <TextCont>
             <H1>Imag3Aid</H1>
-            <H2>56 Photographers, One Cause</H2>
+            <H2>57 Photographers<br/>One Cause</H2>
             <Text>100% of proceeds donated to Ukrainian Emergency Relief Fund</Text>
           </TextCont>
 
           <SocialButtons>
-            <MintButton />
-            {/* <SocialButton style={{marginRight: 15}} color='#0057B7'>twitter</SocialButton>
-            <SocialButton color='#FFDD00' textColor='black'>discord</SocialButton> */}
+            {/* <MintButton /> */}
+            <SocialButton
+              onClick={goToSocials('https://twitter.com/Imag3Aid')}
+              style={{marginRight: 15}} 
+              color='#0057B7'
+            >
+              twitter
+            </SocialButton>
+            <SocialButton 
+              onClick={goToSocials('https://discord.gg/GbvfcxbP')}
+              color='#FFDD00' 
+              textColor='black'
+            >
+              discord
+            </SocialButton>
           </SocialButtons>
         </DescInnerCont>
       </DescOuterCont>
       <InfoCont>
         <TopInfoCont color='#0057B7'>
-          <InfoLine width='40%'>
-            .05eth | 50 editions per image
+
+        <InfoLine width='40%'>
+            Mint Date: April 11th - Noon EST
             <SmallInfoLineText>
-              Blind mint from a collection of 5000 total
+              .05 Eth | 50 Editions per image
             </SmallInfoLineText>
           </InfoLine>
           <InfoLine width='20%'>
-            Minting has started
+          <Countdown date={'2022-04-14T18:00:00'} />
           </InfoLine>
           <InfoLine width='40%'>
-            Mint Date: April 11th - Noon EST
+            .05eth | 50 editions per image
             <SmallInfoLineText>
-              .05 Eth / 50 Editions per image - blind mint from a collection of 2800 total
+              Blind mint from a collection of 2800 total
             </SmallInfoLineText>
           </InfoLine>
         </TopInfoCont>

@@ -15,12 +15,13 @@ const Container = styled.div`
   }
 `;
 
-const SocialButton = ({type, color, children, style, textColor}) => {
+const SocialButton = ({type, color, children, style, textColor, ...props}) => {
   return (
     <Container 
       color={color} 
       style={style}
       textColor={textColor}
+      {...props}
     >
       {children}
     </Container>

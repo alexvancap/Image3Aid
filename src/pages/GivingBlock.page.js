@@ -101,6 +101,11 @@ const GivingBlockPage = () => {
   const goToGivingBlock = () => {
     window.open('https://thegivingblock.com/campaigns/ukraine-emergency-response-fund/', '_blank');
   }
+
+  const goToRoute = (route) => () => {
+    console.log('route', route)
+    window.open(route, '_blank');
+  }
   return (
     <Container height={windowHeight}>
       <InfoLine backgroundColor='#0057B7'>
@@ -117,8 +122,8 @@ const GivingBlockPage = () => {
             <GivingBlockShouout>On-chain Donation made possible by The Giving Block</GivingBlockShouout>
             <SocialCont>
               <LetsDoThis>Lets do this!</LetsDoThis>
-              <SocialButton style={{width: '75px'}} color='#0057B7'>Twitter</SocialButton>
-              <SocialButton style={{width: '75px', marginTop: 20}} color='#FFDD00' textColor='black' >Discord</SocialButton>
+              <SocialButton onClick={goToRoute('https://twitter.com/Imag3Aid')} style={{width: '75px'}} color='#0057B7'>Twitter</SocialButton>
+              <SocialButton onClick={goToRoute('https://discord.com/invite/GbvfcxbP')} style={{width: '75px', marginTop: 20}} color='#FFDD00' textColor='black' >Discord</SocialButton>
             </SocialCont>
           </GivingBlockWrapper>
         </FlexCont>
