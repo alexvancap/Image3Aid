@@ -41,6 +41,11 @@ const PhotographerName = styled(H2)`
   color: aliceblue;
   background-color: rgb(0, 0, 0, 0.3);
   z-index: 5;
+
+  ${props => props.halfWidth  && `
+    float: right;
+    text-align: left;
+  `}
 `;
 
 const SliderPage = ({halfWidth=false, showSelection=false}) => {

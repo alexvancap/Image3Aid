@@ -9,7 +9,6 @@ import SliderPage from '../pages/Slider.page';
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  height: ${props => props.height}px;
   width: 100%;
 `;
 

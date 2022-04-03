@@ -121,7 +121,7 @@ const HomePage = () => {
           <InfoLine width='40%'>
             10 mints / wallet
             <SmallInfoLineText>
-              Blind mint from a collection of 2800 total
+              Blind mint from a collection of 2850 total
             </SmallInfoLineText>
           </InfoLine>
         </TopInfoCont>
