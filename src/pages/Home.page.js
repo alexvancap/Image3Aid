@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useWindowDimensions from '../hooks/useWindowDimensions';
 
-import { H1, H2, Text, SocialButton } from '../framework';
+import { H1, H2, H3, Text, SocialButton } from '../framework';
 import CharityScroller from '../components/CharityScroller';
 import Countdown from 'react-countdown';
 
@@ -115,10 +115,11 @@ const HomePage = () => {
             </SmallInfoLineText>
           </InfoLine>
           <InfoLine width='20%'>
-          <Countdown date={'2022-04-14T18:00:00'} />
+            <H3>Countdown</H3>
+            <Countdown date={'2022-04-14T18:00:00'} />
           </InfoLine>
           <InfoLine width='40%'>
-            .05eth | 50 editions per image
+            10 mints / wallet
             <SmallInfoLineText>
               Blind mint from a collection of 2800 total
             </SmallInfoLineText>

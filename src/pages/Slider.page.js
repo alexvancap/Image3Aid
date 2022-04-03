@@ -11,6 +11,10 @@ const Container = styled.div`
   display: block;
   height: ${props => props.height}px;
   max-width: ${props => props.halfWidth ? '50%' : '100%'};
+
+  @media only screen and (max-width: 1000px){
+  max-height: auto;
+  }
 `;
 
 const SlideCont = styled.div`
@@ -23,9 +27,14 @@ const SlideCont = styled.div`
   background-size: ${props => props.halfWidth ? 'contain' : 'cover'};
 `;
 
+const NameCont = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const PhotographerName = styled(H2)`
-  align-self: flex-end;
-  float: right;
+  text-align: center;
   margin: 40px;
   padding: 10px;
   border-radius: 5px;
@@ -64,13 +73,13 @@ const SliderPage = ({halfWidth=false, showSelection=false}) => {
       <Carousel 
         autoplay
         autoplayInterval={3000}
-        wrapAround
+        wrapAround={halfWidth ? false : true}
         getControlsContainerStyles={hideSliderNav}
       >
         {
           imageArray.map(image => (
             <SlideCont key={image[0]} imagename={image[0]} height={windowHeight} halfWidth={halfWidth}>
-              <PhotographerName>{image[1]}</PhotographerName>
+              <NameCont><PhotographerName centerText={halfWidth}>{image[1]}</PhotographerName></NameCont>
             </SlideCont>
           ))
         }

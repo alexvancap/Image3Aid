@@ -34,7 +34,7 @@ const partnersArray = Object.entries(partners);
 
   const goToPartner = (url) => () => {
     window.open(url, '_blank');
-  }
+  };
 
 
   return(

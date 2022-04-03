@@ -17,7 +17,7 @@ const Container = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
-  min-width: 1000px;
+  min-width: 1100px;
   /* background-color: aliceblue; */
 `;
 

@@ -44,7 +44,6 @@ const Title = styled(H1)`
 const PageWithImage = ({  showSelection=false, children, imageIsLeft=true, src, alt, title, titleStyle, slider=false, paddingTop}) => {
   const { height: windowHeight } = useWindowDimensions()
 
-  console.log('haaaaah', showSelection)
   const childrenWithWrapper = (
     <ChildrenWrapper paddingTop={paddingTop}>
       <Title style={titleStyle}>{title}</Title>

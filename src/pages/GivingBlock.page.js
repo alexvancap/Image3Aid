@@ -95,6 +95,17 @@ const SocialCont = styled.div`
   align-items: center;
 `;
 
+const PartnerTitle = styled(H1)`
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  font-size: 35px;
+  @media only screen and (max-width: 700px){
+    margin-top: 40px;
+  }
+`;
+
+
 const GivingBlockPage = () => {
   const { height: windowHeight } = useWindowDimensions();
 
@@ -118,8 +129,10 @@ const GivingBlockPage = () => {
         <FlexCont height={windowHeight / 2}>
           <Faq />
           <GivingBlockWrapper height={windowHeight / 2}>
+          <PartnerTitle>DONATION PARTNER</PartnerTitle>
+
             <GivingBlockLogo onClick={goToGivingBlock} src='/logos/TGBLogo.png' alt='Giving block logo'/>
-            <GivingBlockShouout>On-chain Donation made possible by The Giving Block</GivingBlockShouout>
+            <GivingBlockShouout>On-chain donation made possible by The Giving Block</GivingBlockShouout>
             <SocialCont>
               <LetsDoThis>Lets do this!</LetsDoThis>
               <SocialButton onClick={goToRoute('https://twitter.com/Imag3Aid')} style={{width: '75px'}} color='#0057B7'>Twitter</SocialButton>
