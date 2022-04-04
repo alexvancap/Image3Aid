@@ -8,7 +8,7 @@ const H1Styled = styled.h1`
   font-family: century-gothic, sans-serif;
   font-weight: 600;
   @media screen and (max-width: 600px) {
-    font-size: 20px;
+    font-size: 40px;
   }
 `;
 
@@ -19,7 +19,7 @@ const H2Styled = styled.h2`
   font-family: century-gothic, sans-serif;
 
   @media screen and (max-width: 600px) {
-    font-size: 15px;
+    font-size: 20px;
   }
 `;
 

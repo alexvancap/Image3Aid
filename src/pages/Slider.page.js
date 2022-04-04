@@ -13,7 +13,7 @@ const Container = styled.div`
   max-width: ${props => props.halfWidth ? '50%' : '100%'};
 
   @media only screen and (max-width: 1000px){
-  max-height: auto;
+    height: 800px;
   }
 `;
 
@@ -25,6 +25,11 @@ const SlideCont = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: ${props => props.halfWidth ? 'contain' : 'cover'};
+  @media only screen and (max-width: 1000px){
+    height: auto;
+    height: 800px;
+
+  }
 `;
 
 const NameCont = styled.div`

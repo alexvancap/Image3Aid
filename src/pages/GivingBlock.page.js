@@ -6,8 +6,11 @@ import useWindowDimensions from '../hooks/useWindowDimensions';
 import Faq from './../components/Faq'
 
 const Container = styled.div`
-  min-height: ${props => props.height + 80}px;//+80 for infolines
+  height: ${props => props.height + 80}px;//+80 for infolines
   width: 100%;
+  @media only screen and (max-width: 700px){
+    height: 800px;
+  }
 `;
 
 const InfoLine = styled.div`

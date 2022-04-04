@@ -7,8 +7,21 @@ import { H1, H2, H3, Text, SocialButton } from '../framework';
 import CharityScroller from '../components/CharityScroller';
 import Countdown from 'react-countdown';
 
+
+
 const Container = styled.div`
-  height: ${props => props.height - 100}px; //for header
+  min-height: ${props => props.height - 100}px; //for header
+  @media only screen and (max-width: 1000px){
+    height: 600px;
+  }
+  
+`;
+
+const InnerCont = styled.div`
+  height: ${props => props.height - 180}px; //for header and infolin e
+  @media only screen and (max-width: 1000px){
+    height: 820px;
+  }
 `;
 
 const DescOuterCont = styled.div`
@@ -38,8 +51,6 @@ const SocialButtons = styled.div`
 `;
 
 const InfoCont = styled.div`
-  position: absolute;
-  bottom: 0;
   width: 100%;
   height: 80px;
   background-color: red;
@@ -78,6 +89,7 @@ const HomePage = () => {
   }
   return (
     <Container height={windowHeight || 0}>
+    <InnerCont height={windowHeight}>
       <DescOuterCont>
         <DescInnerCont>
           <TextCont>
@@ -105,6 +117,8 @@ const HomePage = () => {
           </SocialButtons>
         </DescInnerCont>
       </DescOuterCont>
+      </InnerCont>
+
       <InfoCont>
         <TopInfoCont color='#0057B7'>
 

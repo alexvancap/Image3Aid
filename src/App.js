@@ -15,9 +15,8 @@ const Container = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
-  min-width: 1100px;
+  min-width: 1200px;
   /* background-color: aliceblue; */
 `;
 
@@ -26,6 +25,9 @@ const HomeCont = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  @media only screen and (max-width: 1000px){
+    height: 1000px;
+  }
 `;
 
 const PaddingCont = styled.div`
