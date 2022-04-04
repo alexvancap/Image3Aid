@@ -29,18 +29,18 @@ const FounderText = styled(Text)`
 `;
 
 const founders = [
-  {  name: 'Taimaz Ashtari', url: 'https://twitter.com/taiimazz' },
-  {  name: 'Mehdi Benembarek', url: 'https://twitter.com/MehdiBenembarek' },
+  {  name: 'Alexander Van Cappellen', url: 'https://twitter.com/avancap' },
+  {  name: 'Amy Li', url: 'https://twitter.com/amy_li' },
+  {  name: 'Ava Silvery', url: 'https://twitter.com/AvaSilvery' },
   {  name: 'Bozo', url: 'https://twitter.com/bozo_eth' },
   {  name: 'Gregory Eddi Jones', url: 'https://twitter.com/EddiJonesNFT' },
   {  name: 'Hugo Faz', url: 'https://twitter.com/HugoFaz' },
-  {  name: 'Zak Krevitt', url: 'https://twitter.com/zak_krevitt' },
-  {  name: 'Amy Li', url: 'https://twitter.com/amy_li' },
   {  name: 'Maciej Miliszkiewicz', url: 'https://twitter.com/MMiliszkiewicz' },
+  {  name: 'Mehdi Benembarek', url: 'https://twitter.com/MehdiBenembarek' },
   {  name: 'Richard Pilnick', url: 'https://twitter.com/richardpilnick' },
-  {  name: 'Ava Silvery', url: 'https://twitter.com/AvaSilvery' },
-  {  name: 'Alexander Van Cappellen', url: 'https://twitter.com/avancap' },
+  {  name: 'Taimaz Ashtari', url: 'https://twitter.com/taiimazz' },
   {  name: 'Wim Van Cappellen', url: 'https://twitter.com/WimVanCappellen' },
+  {  name: 'Zak Krevitt', url: 'https://twitter.com/zak_krevitt' },
 ]
 
 
