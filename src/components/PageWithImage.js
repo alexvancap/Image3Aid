@@ -16,6 +16,9 @@ const Image = styled.img`
   width: 50%;
   height: 100%;
   object-fit: cover;
+  @media only screen and (max-width: 700px){
+    height: auto;
+  }
   /* @media only screen and (max-width: 1000px){
     width: 100%;
     height: auto;
