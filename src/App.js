@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useLayoutEffect} from 'react';
 import styled from 'styled-components';
 import './index.css';
 
@@ -38,6 +38,10 @@ const PaddingCont = styled.div`
 `;
 
 function App() {
+
+  useLayoutEffect(() => {
+    document.body.style.zoom = "100%"
+  }, [])
   return (
     <Container>
       <HomeCont>
