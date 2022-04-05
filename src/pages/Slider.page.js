@@ -60,7 +60,7 @@ const SliderPage = ({halfWidth=false, showSelection=false}) => {
     "AlessandraSanguinetti": "Alessandra Sanguinetti",
     "DavidBrandonGeeting": "David Brandon Geeting",
     "DavidGuttenfelder": "David Guttenfelder",
-    "MarilynHuecopy": "Marilyn Hue",
+    "MarilynHue": "Marilyn Hue",
     "MishadeRidder": "Misha de Ridder",
     "NadineBauer": "Nadine Bauer",
     "IsraelRiqueros": "Israel Riqueros",
