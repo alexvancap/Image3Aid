@@ -108,7 +108,7 @@ const HomePage = () => {
               twitter
             </SocialButton>
             <SocialButton 
-              onClick={goToSocials('https://discord.gg/GbvfcxbP')}
+              onClick={goToSocials('https://discord.gg/FV64sj65aK')}
               color='#FFDD00' 
               textColor='black'
             >

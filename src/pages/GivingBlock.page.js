@@ -139,7 +139,7 @@ const GivingBlockPage = () => {
             <SocialCont>
               <LetsDoThis>Lets do this!</LetsDoThis>
               <SocialButton onClick={goToRoute('https://twitter.com/Imag3Aid')} style={{width: '75px'}} color='#0057B7'>Twitter</SocialButton>
-              <SocialButton onClick={goToRoute('https://discord.com/invite/GbvfcxbP')} style={{width: '75px', marginTop: 20}} color='#FFDD00' textColor='black' >Discord</SocialButton>
+              <SocialButton onClick={goToRoute('https://discord.gg/FV64sj65aK')} style={{width: '75px', marginTop: 20}} color='#FFDD00' textColor='black' >Discord</SocialButton>
             </SocialCont>
           </GivingBlockWrapper>
         </FlexCont>
