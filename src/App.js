@@ -10,7 +10,6 @@ import Photographers from './pages/Photographers.page';
 import PartnersPage from './pages/Partners.page';
 import FoundingMembersPage from './pages/FoundingMembers.page';
 import GivingBlockPage from './pages/GivingBlock.page';
-import { enableFreeze } from "react-native-screens";
 
 
 const Container = styled.div`
@@ -42,7 +41,6 @@ const PaddingCont = styled.div`
 function App() {
   useLayoutEffect(() => {
     document.body.style.zoom = "100%"
-    enableFreeze(true);
   }, [])
   return (
     <Container>
