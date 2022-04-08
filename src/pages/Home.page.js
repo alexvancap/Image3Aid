@@ -130,7 +130,7 @@ const HomePage = () => {
           </InfoLine>
           <InfoLine width='20%'>
             <H3>Countdown</H3>
-            <Countdown date={'2022-04-14T18:00:00'} />
+            <Countdown date={'2022-04-11T12:00:00'} />
           </InfoLine>
           <InfoLine width='40%'>
             10 mints / wallet
