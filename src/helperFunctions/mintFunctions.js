@@ -10,11 +10,15 @@ export const connectWallet = async () => {
       const addressArray = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
+
+      const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+      const network = await ethers.providers.getNetwork("rinkeby")
       const obj = {
         status: "👆🏽 Write a message in the text-field above.",
         address: addressArray[0],
         success: true,
       };
+      console.log('haaaaaah', network)
       return obj;
     } catch (err) {
       return {
@@ -83,7 +87,7 @@ export const getCurrentWalletConnected = async () => {
   }
 }
 
-export const askContractToMintNft = async () => {
+export const askContractToMintNft = async (amount, fullSet=false) => {
   try {
     const { ethereum } = window;
 
@@ -95,6 +99,11 @@ export const askContractToMintNft = async () => {
       // STEP1: read price from contract don't hardcode it
       const price = await connectedContract.price();
       const priceInEth = utils.formatEther(price.toString(), "ether");
+      if(fullSet){
+        return connectedContract.mintFullSet();
+      } else {
+        return connectedContract.mint(amount);
+      }
 
       // TODO numberOfNftsToMint this is static now, might need to make it dynamic?
       const numberOfNftsToMint = 1;
@@ -106,7 +115,6 @@ export const askContractToMintNft = async () => {
       });
       console.log('tnx', tnx);
       // console.log("Going to pop wallet now to pay gas...")
-      // let nftTxn = await connectedContract.makeAnEpicNFT()
 
       // console.log("Mining... please wait")
       // await nftTxn.wait()
@@ -119,4 +127,18 @@ export const askContractToMintNft = async () => {
     console.log(error)
   }
 }
+
+export const askContractToMintAll = async (amount) => {
+  const { ethereum } = window;
+
+
+  const provider = new ethers.providers.Web3Provider(ethereum);
+  const signer = provider.getSigner()
+  const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, contractABI, signer)
+
+  console.log('haaaaaaahaaaa', connectedContract.mintFullSet(amount));
+
+
+}
+
 

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 import useWindowDimensions from '../hooks/useWindowDimensions';
+import { useCountdown } from "rooks";
 
 import { H1, H2, H3, Text, SocialButton } from '../framework';
 import CharityScroller from '../components/CharityScroller';
-import Countdown from 'react-countdown';
-// import MintButton from '../components/Mint/MintButton'
+import MintButton from './../components/Mint/MintButton';
 
 
 const Container = styled.div`
@@ -83,10 +84,22 @@ const TopInfoCont = styled.div`
 
 const HomePage = () => {
   const { height: windowHeight } = useWindowDimensions();
+  const [ timeLeft, setTimeLeft ] = useState('');
+  const [ timerEnded, setTimerEnded ] = useState(false);
+  const mintingStartTime = new Date('2022-04-09T18:00:00')
+  useCountdown(mintingStartTime, {
+    interval: 1000,
+    onDown: setTimeLeft,
+    onEnd: () => {
+      if(!timerEnded) setTimerEnded(true)
+    },
+  });
 
-  const goToSocials = (route) => () => {
-    window.open(route, '_blank')
-  }
+  const goToSocials = (route) => () => 
+    window.open(route, '_blank');
+
+  const formattedTime = moment(timeLeft).format('DD:h:m:s');
+
   return (
     <Container height={windowHeight || 0}>
     <InnerCont height={windowHeight}>
@@ -99,21 +112,32 @@ const HomePage = () => {
           </TextCont>
 
           <SocialButtons>
-            {/* <MintButton /> */}
-            <SocialButton
-              onClick={goToSocials('https://twitter.com/Imag3Aid')}
-              style={{marginRight: 15}} 
-              color='#0057B7'
-            >
-              twitter
-            </SocialButton>
-            <SocialButton 
-              onClick={goToSocials('https://discord.gg/FV64sj65aK')}
-              color='#FFDD00' 
-              textColor='black'
-            >
-              discord
-            </SocialButton>
+            {
+              timerEnded 
+              ? (
+
+                <MintButton />
+
+              ) : (
+                <>
+                  <SocialButton
+                    onClick={goToSocials('https://twitter.com/Imag3Aid')}
+                    style={{marginRight: 15}} 
+                    color='#0057B7'
+                  >
+                    twitter
+                  </SocialButton>
+                  <SocialButton 
+                    onClick={goToSocials('https://discord.gg/FV64sj65aK')}
+                    color='#FFDD00' 
+                    textColor='black'
+                  >
+                    discord
+                  </SocialButton>
+                </>
+              )
+            }
+
           </SocialButtons>
         </DescInnerCont>
       </DescOuterCont>
@@ -130,7 +154,8 @@ const HomePage = () => {
           </InfoLine>
           <InfoLine width='20%'>
             <H3>Countdown</H3>
-            <Countdown date={'2022-04-11T18:00:00'} />
+            {formattedTime === 'Invalid date' && 'Timer ended'}
+            {formattedTime !== 'Invalid date' && formattedTime}
           </InfoLine>
           <InfoLine width='40%'>
             10 mints / wallet

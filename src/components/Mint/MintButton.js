@@ -6,8 +6,8 @@ import { connectWallet, askContractToMintNft } from '../../helperFunctions';
 
 import Modal from '@material-ui/core/Modal';
 import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { H2 } from './../../framework';
 
 const MainButton = styled.div`
   border-radius: 20px;
@@ -22,7 +22,7 @@ const MainButton = styled.div`
   &:hover {
     cursor: pointer;
     opacity: 0.8;
-    
+
   }
 `;
 
@@ -37,9 +37,9 @@ const ModalOuter = styled.div`
   box-shadow: 24;
 `;
 
-const MintHeader = styled(H2)`
-  text-align: center;
-`;
+// const MintHeader = styled(H2)`
+//   text-align: center;
+// `;
 
 const ConnectWalletButton = styled(Button)`
   && {
@@ -60,14 +60,32 @@ const modalCont = {
   p: 4,
 };
 
+const numberStyle = {
+  // width: '50%'
+}
+
 const ButtonWrapper = styled.div`
   flex-direction: column;
+`;
+
+const MintButtonsWrapper = styled.div`
+
+`;
+
+const InputWrapper = styled.div`
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+/* width: 30%; */
+  margin: 0 auto;
 `;
 
 
 const MintButton = () => {
   const [walletAdress, setWallet] = useState(null);
   const [modalIsOpen, setModalOpen] = useState(false);
+  const [amount, setNewAmount] = useState('1');
   // const [status, setStatus] = useState('');
 
   // const getCurrentWallet = async () => {
@@ -114,24 +132,31 @@ const MintButton = () => {
   const toggleModal = () => setModalOpen(!modalIsOpen);
 
   const onMintPressed = async () => {
-     await askContractToMintNft();
+     await askContractToMintNft(amount);
   }
+
+  const onFullSetPressed = async () => {
+    await askContractToMintNft(amount, true);
+  }
+  
+  const handleAmountChange = (newAmount) => setNewAmount(newAmount.target.value)
+  
 
 
   return (
     <>
       <ButtonWrapper>
         <MainButton 
-          onClick={connectWalletPressed} 
+          onClick={toggleModal} 
           textColor="white" color="#0057B7"
           disabled={walletAdress}
         >
-          {walletAdress ? `connected with: ${walletAdress}` : 'Connect Wallet'}
+          Press here to mint!
         </MainButton>
         <MainButton 
           onClick={toggleModal}
         >
-          Press here to mint!
+          Opensea
         </MainButton>
       </ButtonWrapper>
 
@@ -143,7 +168,6 @@ const MintButton = () => {
       >
       <ModalOuter>
         <Box sx={modalCont}>
-          <MintHeader>MINT</MintHeader>
           <ConnectWalletButton 
             variant="outlined" 
             onClick={connectWalletPressed}
@@ -154,12 +178,33 @@ const MintButton = () => {
                 : 'Connect wallet'
             }
           </ConnectWalletButton>
+         <InputWrapper>
+          <TextField label="Amount" placeholder='type amount here...' sx={numberStyle} onChange={handleAmountChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
+         </InputWrapper>
+
+         <MintButtonsWrapper>
           <ConnectWalletButton 
-            variant="outlined" 
-            onClick={onMintPressed}
-          >
-            mint
-          </ConnectWalletButton>
+              variant="outlined" 
+              onClick={onMintPressed}
+            >
+              mint
+            </ConnectWalletButton>
+            <ConnectWalletButton 
+              variant="outlined" 
+              onClick={onFullSetPressed}
+            >
+              mint full set (whitelist only)
+            </ConnectWalletButton>
+
+            {/* <Snackbar
+              anchorOrigin={{ vertical, horizontal }}
+              open={open}
+              onClose={handleClose}
+              message="I love snacks"
+              key={vertical + horizontal}
+            /> */}
+         </MintButtonsWrapper>
+          
           {/* <ConnectWalletButton 
             variant="outlined" 
             onClick={handleAskContract}
