@@ -1,7 +1,7 @@
-import { ethers } from 'ethers'
+import { ethers, utils } from 'ethers'
 
 const contractABI = require("../contract-abi.json");
-const CONTRACT_ADDRESS = "0x4eb806Ae500bb224011A45969ac3D0f14a25A773";
+const CONTRACT_ADDRESS = "0xf935f8C6F0fB06e96F0a720e5b1AA9d005C82A41";
 
 
 export const connectWallet = async () => {
@@ -92,8 +92,19 @@ export const askContractToMintNft = async () => {
       const signer = provider.getSigner()
       const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, contractABI, signer)
 
+      // STEP1: read price from contract don't hardcode it
+      const price = await connectedContract.price();
+      const priceInEth = utils.formatEther(price.toString(), "ether");
 
-      console.log('haaaaaaahaaaa', connectedContract.mint(1));
+      // TODO numberOfNftsToMint this is static now, might need to make it dynamic?
+      const numberOfNftsToMint = 1;
+      const tnx  = await connectedContract.mint(numberOfNftsToMint, {
+        // Value is basically how much eth will be needed to mint numberOfNftsToMint
+        value: utils.parseEther(
+          (priceInEth * numberOfNftsToMint).toString()
+        ),
+      });
+      console.log('tnx', tnx);
       // console.log("Going to pop wallet now to pay gas...")
       // let nftTxn = await connectedContract.makeAnEpicNFT()
 

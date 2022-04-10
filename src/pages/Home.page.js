@@ -6,7 +6,7 @@ import useWindowDimensions from '../hooks/useWindowDimensions';
 import { H1, H2, H3, Text, SocialButton } from '../framework';
 import CharityScroller from '../components/CharityScroller';
 import Countdown from 'react-countdown';
-
+// import MintButton from '../components/Mint/MintButton'
 
 
 const Container = styled.div`
