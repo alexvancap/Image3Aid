@@ -10,15 +10,11 @@ export const connectWallet = async () => {
       const addressArray = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
-
-      const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-      const network = await ethers.providers.getNetwork("rinkeby")
       const obj = {
         status: "👆🏽 Write a message in the text-field above.",
         address: addressArray[0],
         success: true,
       };
-      console.log('haaaaaah', network)
       return obj;
     } catch (err) {
       return {
@@ -87,58 +83,70 @@ export const getCurrentWalletConnected = async () => {
   }
 }
 
+// export const askContractToMintAll = async (amount) => {
+//   console.log('huuuuuh')
+
+//   const { ethereum } = window;
+
+
+//   const provider = new ethers.providers.Web3Provider(ethereum);
+//   const signer = provider.getSigner()
+
+//   const connectedContract = await new ethers.Contract(CONTRACT_ADDRESS, contractABI, signer)
+
+//   const price = await connectedContract.price();
+//   const priceInEth = utils.formatEther(price.toString(), "ether");
+
+
+//   console.log('haaaaaaahaaaa', await connectedContract.mintFullSet({
+//     // Value is basically how much eth will be needed to mint numberOfNftsToMint
+//     value: utils.parseEther(
+//       (priceInEth * 57).toString()
+//     ),
+//   }))
+
+// }
+
 export const askContractToMintNft = async (amount, fullSet=false) => {
   try {
     const { ethereum } = window;
 
     if (ethereum) {
       const provider = new ethers.providers.Web3Provider(ethereum);
-      const signer = provider.getSigner()
+      const signer = provider.getSigner();
       const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, contractABI, signer)
 
-      // STEP1: read price from contract don't hardcode it
       const price = await connectedContract.price();
       const priceInEth = utils.formatEther(price.toString(), "ether");
+
+      const calculatePrice = amountOfItems => {
+        return utils.parseEther(
+          (priceInEth * amountOfItems).toString()
+        )
+      } 
+
       if(fullSet){
-        return connectedContract.mintFullSet();
+        await connectedContract.mintFullSet({value: calculatePrice(57)})
+        return { success: `You successfully minted all nft\`s`}
       } else {
-        return connectedContract.mint(amount);
+        const tnx = await connectedContract.mint(amount, {
+          // Value is basically how much eth will be needed to mint numberOfNftsToMint
+          value: calculatePrice(amount || 1)
+        });
+        return {success: `minting ${amount} contracts: `, tnx};
       }
-
-      // TODO numberOfNftsToMint this is static now, might need to make it dynamic?
-      const numberOfNftsToMint = 1;
-      const tnx  = await connectedContract.mint(numberOfNftsToMint, {
-        // Value is basically how much eth will be needed to mint numberOfNftsToMint
-        value: utils.parseEther(
-          (priceInEth * numberOfNftsToMint).toString()
-        ),
-      });
-      console.log('tnx', tnx);
-      // console.log("Going to pop wallet now to pay gas...")
-
-      // console.log("Mining... please wait")
-      // await nftTxn.wait()
-      // console.log(nftTxn)
-      // console.log(`Mined, tee transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`)
     } else {
-      console.log("Ethereum object doesn't exist")
+      return {error: "Metamask not installed."};
     }
   } catch (error) {
-    console.log(error)
+    console.log('errroooor', error)
+    if(error.code === 'INSUFFICIENT_FUNDS'){
+      return {error: "Insufficient funds in wallet"}
+    }
+    return {error: error.message}
   }
 }
 
-export const askContractToMintAll = async (amount) => {
-  const { ethereum } = window;
 
-
-  const provider = new ethers.providers.Web3Provider(ethereum);
-  const signer = provider.getSigner()
-  const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, contractABI, signer)
-
-  console.log('haaaaaaahaaaa', connectedContract.mintFullSet(amount));
-
-
-}
 
 

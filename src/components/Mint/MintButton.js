@@ -8,6 +8,7 @@ import Modal from '@material-ui/core/Modal';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Alert from '@mui/material/Alert';
 
 const MainButton = styled.div`
   border-radius: 20px;
@@ -73,10 +74,10 @@ const MintButtonsWrapper = styled.div`
 `;
 
 const InputWrapper = styled.div`
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 /* width: 30%; */
   margin: 0 auto;
 `;
@@ -86,53 +87,18 @@ const MintButton = () => {
   const [walletAdress, setWallet] = useState(null);
   const [modalIsOpen, setModalOpen] = useState(false);
   const [amount, setNewAmount] = useState('1');
-  // const [status, setStatus] = useState('');
-
-  // const getCurrentWallet = async () => {
-  //   const { address, status } = await getCurrentWalletConnected();
-  //   setWallet(address);
-  //   setStatus(status);
-  //   console.log('adresss', address);
-  // }
-
-  // useEffect(() => {
-  //   getCurrentWallet();
-  //   addWalletListener();
-  // }, [])
+  const [ errorMessage, setErrorMessage] = useState('');
 
   const connectWalletPressed = async () => {
     const walletResponse = await connectWallet()
-    // setStatus(walletResponse.status)
     setWallet(walletResponse.address)
-  }
-
-  // const addWalletListener = () => {
-  //   if (window.ethereum) {
-  //     window.ethereum.on("accountsChanged", (accounts) => {
-  //       if (accounts.length > 0) {
-  //         setWallet(accounts[0])
-  //         setStatus("👆🏽 Write a message in the text-field above.")
-  //       } else {
-  //         setWallet("")
-  //         setStatus("🦊 Connect to MetaMask using the top right button.")
-  //       }
-  //     })
-  //   } else {
-  //     setStatus(
-  //       <p>
-  //         {" "}
-  //         🦊 <a target="_blank" rel="noreferrer" href={`https://metamask.io/download.html`} rel='noreferrer'>
-  //           You must install MetaMask, a virtual Ethereum wallet, in your browser.
-  //         </a>
-  //       </p>
-  //     )
-  //   }
-  // }
+  };
 
   const toggleModal = () => setModalOpen(!modalIsOpen);
 
   const onMintPressed = async () => {
-     await askContractToMintNft(amount);
+     const contractRes = await askContractToMintNft(amount);
+     if(contractRes.error) setErrorMessage(contractRes.error)
   }
 
   const onFullSetPressed = async () => {
@@ -168,6 +134,8 @@ const MintButton = () => {
       >
       <ModalOuter>
         <Box sx={modalCont}>
+        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+        
           <ConnectWalletButton 
             variant="outlined" 
             onClick={connectWalletPressed}
@@ -195,22 +163,7 @@ const MintButton = () => {
             >
               mint full set (whitelist only)
             </ConnectWalletButton>
-
-            {/* <Snackbar
-              anchorOrigin={{ vertical, horizontal }}
-              open={open}
-              onClose={handleClose}
-              message="I love snacks"
-              key={vertical + horizontal}
-            /> */}
          </MintButtonsWrapper>
-          
-          {/* <ConnectWalletButton 
-            variant="outlined" 
-            onClick={handleAskContract}
-          >
-   askMint
-          </ConnectWalletButton> */}
         </Box>
       </ModalOuter>
       
