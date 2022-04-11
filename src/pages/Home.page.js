@@ -86,7 +86,7 @@ const HomePage = () => {
   const { height: windowHeight } = useWindowDimensions();
   const [ timeLeft, setTimeLeft ] = useState('');
   const [ timerEnded, setTimerEnded ] = useState(false);
-  const mintingStartTime = new Date(Date.UTC(2022, 3, '11', '18'));
+  const mintingStartTime = new Date(Date.UTC(2022, 3, 11, 18));
 
   useCountdown(mintingStartTime, {
     interval: 1000,
