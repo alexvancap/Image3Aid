@@ -129,7 +129,7 @@ export const askContractToMintNft = async (amount, fullSet=false) => {
         await connectedContract.mintFullSet({value: calculatePrice(57)})
         return { success: `You successfully minted all nft\`s`}
       } else {
-        const tnx = await connectedContract.mint(amount, {
+        await connectedContract.mint(amount, {
           // Value is basically how much eth will be needed to mint numberOfNftsToMint
           value: calculatePrice(amount || 1)
         });
