@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import moment from 'moment';
 
 import useWindowDimensions from '../hooks/useWindowDimensions';
-import { useCountdown } from "rooks";
 
 import { H1, H2, H3, Text, SocialButton } from '../framework';
 import CharityScroller from '../components/CharityScroller';
