@@ -22,7 +22,7 @@ const Container = styled.div`
 `;
 
 const HomeCont = styled.div`
-  background: url('/images/lorenzoMeloni.jpg');
+  background: url('/images/lorenzoHome.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
