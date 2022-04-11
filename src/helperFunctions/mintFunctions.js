@@ -1,7 +1,7 @@
-import { ethers } from 'ethers'
+import { ethers, utils } from 'ethers'
 
 const contractABI = require("../contract-abi.json");
-const CONTRACT_ADDRESS = "0x4eb806Ae500bb224011A45969ac3D0f14a25A773";
+const CONTRACT_ADDRESS = "0x0Cb4D5ACdA357cbD031677b7b0c52D758793665A";
 
 
 export const connectWallet = async () => {
@@ -83,29 +83,69 @@ export const getCurrentWalletConnected = async () => {
   }
 }
 
-export const askContractToMintNft = async () => {
+// export const askContractToMintAll = async (amount) => {
+//   console.log('huuuuuh')
+
+//   const { ethereum } = window;
+
+
+//   const provider = new ethers.providers.Web3Provider(ethereum);
+//   const signer = provider.getSigner()
+
+//   const connectedContract = await new ethers.Contract(CONTRACT_ADDRESS, contractABI, signer)
+
+//   const price = await connectedContract.price();
+//   const priceInEth = utils.formatEther(price.toString(), "ether");
+
+
+//   console.log('haaaaaaahaaaa', await connectedContract.mintFullSet({
+//     // Value is basically how much eth will be needed to mint numberOfNftsToMint
+//     value: utils.parseEther(
+//       (priceInEth * 57).toString()
+//     ),
+//   }))
+
+// }
+
+export const askContractToMintNft = async (amount, fullSet=false) => {
   try {
     const { ethereum } = window;
 
     if (ethereum) {
       const provider = new ethers.providers.Web3Provider(ethereum);
-      const signer = provider.getSigner()
+      const signer = provider.getSigner();
       const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, contractABI, signer)
 
+      const price = await connectedContract.price();
+      const priceInEth = utils.formatEther(price.toString(), "ether");
 
-      console.log('haaaaaaahaaaa', connectedContract.mint(1));
-      // console.log("Going to pop wallet now to pay gas...")
-      // let nftTxn = await connectedContract.makeAnEpicNFT()
+      const calculatePrice = amountOfItems => {
+        return utils.parseEther(
+          (priceInEth * amountOfItems).toString()
+        )
+      } 
 
-      // console.log("Mining... please wait")
-      // await nftTxn.wait()
-      // console.log(nftTxn)
-      // console.log(`Mined, tee transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`)
+      if(fullSet){
+        await connectedContract.mintFullSet({value: calculatePrice(57)})
+        return { success: `You successfully minted all nft\`s`}
+      } else {
+        const tnx = await connectedContract.mint(amount, {
+          // Value is basically how much eth will be needed to mint numberOfNftsToMint
+          value: calculatePrice(amount || 1)
+        });
+        return {success: `succefly ${amount} ctracts. `, tnx};
+      }
     } else {
-      console.log("Ethereum object doesn't exist")
+      return {error: "Metamask not installed."};
     }
   } catch (error) {
-    console.log(error)
+    if(error.code === 'INSUFFICIENT_FUNDS'){
+      return {error: "Insufficient funds in wallet"}
+    }
+    return {error: error.message}
   }
 }
+
+
+
 

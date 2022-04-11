@@ -6,8 +6,9 @@ import { connectWallet, askContractToMintNft } from '../../helperFunctions';
 
 import Modal from '@material-ui/core/Modal';
 import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { H2 } from './../../framework';
+import Alert from '@mui/material/Alert';
 
 const MainButton = styled.div`
   border-radius: 20px;
@@ -22,7 +23,7 @@ const MainButton = styled.div`
   &:hover {
     cursor: pointer;
     opacity: 0.8;
-    
+
   }
 `;
 
@@ -37,9 +38,9 @@ const ModalOuter = styled.div`
   box-shadow: 24;
 `;
 
-const MintHeader = styled(H2)`
-  text-align: center;
-`;
+// const MintHeader = styled(H2)`
+//   text-align: center;
+// `;
 
 const ConnectWalletButton = styled(Button)`
   && {
@@ -60,78 +61,78 @@ const modalCont = {
   p: 4,
 };
 
+const numberStyle = {
+  // width: '50%'
+}
+
 const ButtonWrapper = styled.div`
   flex-direction: column;
+`;
+
+const MintButtonsWrapper = styled.div`
+
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+/* width: 30%; */
+  margin: 0 auto;
 `;
 
 
 const MintButton = () => {
   const [walletAdress, setWallet] = useState(null);
   const [modalIsOpen, setModalOpen] = useState(false);
-  // const [status, setStatus] = useState('');
-
-  // const getCurrentWallet = async () => {
-  //   const { address, status } = await getCurrentWalletConnected();
-  //   setWallet(address);
-  //   setStatus(status);
-  //   console.log('adresss', address);
-  // }
-
-  // useEffect(() => {
-  //   getCurrentWallet();
-  //   addWalletListener();
-  // }, [])
+  const [amount, setNewAmount] = useState('1');
+  const [ errorMessage, setErrorMessage] = useState('');
+  const [ successMessage, setSuccessMessage ] = useState('');
 
   const connectWalletPressed = async () => {
     const walletResponse = await connectWallet()
-    // setStatus(walletResponse.status)
     setWallet(walletResponse.address)
-  }
-
-  // const addWalletListener = () => {
-  //   if (window.ethereum) {
-  //     window.ethereum.on("accountsChanged", (accounts) => {
-  //       if (accounts.length > 0) {
-  //         setWallet(accounts[0])
-  //         setStatus("👆🏽 Write a message in the text-field above.")
-  //       } else {
-  //         setWallet("")
-  //         setStatus("🦊 Connect to MetaMask using the top right button.")
-  //       }
-  //     })
-  //   } else {
-  //     setStatus(
-  //       <p>
-  //         {" "}
-  //         🦊 <a target="_blank" rel="noreferrer" href={`https://metamask.io/download.html`} rel='noreferrer'>
-  //           You must install MetaMask, a virtual Ethereum wallet, in your browser.
-  //         </a>
-  //       </p>
-  //     )
-  //   }
-  // }
+  };
 
   const toggleModal = () => setModalOpen(!modalIsOpen);
 
   const onMintPressed = async () => {
-     await askContractToMintNft();
+     const contractRes = await askContractToMintNft(amount);
+     if(contractRes.error) setErrorMessage(contractRes.error);
+     else {
+       setErrorMessage('');
+       setSuccessMessage(contractRes.error);
+     }
   }
+
+  const onFullSetPressed = async () => {
+    const contractRes = await askContractToMintNft(amount, true);
+    if(contractRes.error) setErrorMessage(contractRes.error);
+    else {
+      setErrorMessage('');
+      setSuccessMessage(contractRes.error)
+    }
+  }
+  
+  const handleAmountChange = (newAmount) => setNewAmount(newAmount.target.value)
+  
 
 
   return (
     <>
       <ButtonWrapper>
         <MainButton 
-          onClick={connectWalletPressed} 
+          onClick={toggleModal} 
           textColor="white" color="#0057B7"
           disabled={walletAdress}
         >
-          {walletAdress ? `connected with: ${walletAdress}` : 'Connect Wallet'}
+          Press here to mint!
         </MainButton>
         <MainButton 
           onClick={toggleModal}
         >
-          Press here to mint!
+          Opensea
         </MainButton>
       </ButtonWrapper>
 
@@ -143,7 +144,10 @@ const MintButton = () => {
       >
       <ModalOuter>
         <Box sx={modalCont}>
-          <MintHeader>MINT</MintHeader>
+        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+        {successMessage && <Alert severity="success">{successMessage}</Alert>}
+
+        
           <ConnectWalletButton 
             variant="outlined" 
             onClick={connectWalletPressed}
@@ -154,18 +158,24 @@ const MintButton = () => {
                 : 'Connect wallet'
             }
           </ConnectWalletButton>
+         <InputWrapper>
+          <TextField label="Amount" placeholder='type amount here...' sx={numberStyle} onChange={handleAmountChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
+         </InputWrapper>
+
+         <MintButtonsWrapper>
           <ConnectWalletButton 
-            variant="outlined" 
-            onClick={onMintPressed}
-          >
-            mint
-          </ConnectWalletButton>
-          {/* <ConnectWalletButton 
-            variant="outlined" 
-            onClick={handleAskContract}
-          >
-   askMint
-          </ConnectWalletButton> */}
+              variant="outlined" 
+              onClick={onMintPressed}
+            >
+              mint
+            </ConnectWalletButton>
+            <ConnectWalletButton 
+              variant="outlined" 
+              onClick={onFullSetPressed}
+            >
+              mint full set (whitelist only)
+            </ConnectWalletButton>
+         </MintButtonsWrapper>
         </Box>
       </ModalOuter>
       
