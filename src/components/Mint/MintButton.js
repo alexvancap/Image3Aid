@@ -133,6 +133,7 @@ const MintButton = () => {
   const handleAmountChange = (newAmount) => setNewAmount(newAmount.target.value)
   
 
+  const goToOpensea = () =>  window.open('https://opensea.io/collection/imag3aid', '_blank');
 
   return (
     <>
@@ -144,11 +145,11 @@ const MintButton = () => {
         >
           Press here to mint!
         </MainButton>
-        {/* <MainButton 
-          onClick={toggleModal}
+        <MainButton 
+          onClick={goToOpensea}
         >
           Opensea
-        </MainButton> */}
+        </MainButton>
       </ButtonWrapper>
 
       <Modal
