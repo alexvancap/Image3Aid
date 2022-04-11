@@ -81,10 +81,18 @@ const TopInfoCont = styled.div`
   background-color: ${props => props.color};
 `;
 
+const SocialCont = styled.div`
+  position: absolute;
+  left: 35px;
+  top: 35px;
+  width: 150px;
+  height: 500px;
+`;
+
 const HomePage = () => {
   const { height: windowHeight } = useWindowDimensions();
   const [ timeLeft, setTimeLeft ] = useState('');
-  const [ timerEnded, setTimerEnded ] = useState(false);
+  const [ timerEnded, setTimerEnded ] = useState(true);
   const mintingStartTime = new Date(2022, 4, 11, 17);
 
   useCountdown(mintingStartTime, {
@@ -102,43 +110,63 @@ const HomePage = () => {
 
   return (
     <Container height={windowHeight || 0}>
-    <InnerCont height={windowHeight}>
-      <DescOuterCont>
-        <DescInnerCont>
-          <TextCont>
-            <H1>Imag3Aid</H1>
-            <H2>57 Photographers<br/>One Cause</H2>
-            <Text>100% of proceeds donated to Ukrainian Emergency Relief Fund</Text>
-          </TextCont>
+      <SocialCont>
+        <SocialButton
+          onClick={goToSocials('https://discord.gg/FV64sj65aK')}
+          color='#0057B7'
+        >
+          discord
+        </SocialButton>
+        <SocialButton
+          onClick={goToSocials('https://twitter.com/Imag3Aid')}
+          style={{marginTop: 10}} 
+          color='#FFDD00'
+          textColor="black"
+        >
+          twitter
+        </SocialButton>
 
-          <SocialButtons>
-            {
-              timerEnded 
-              ? <MintButton />
-              : (
-                <>
-                  <SocialButton
-                    onClick={goToSocials('https://twitter.com/Imag3Aid')}
-                    style={{marginRight: 15}} 
-                    color='#0057B7'
-                  >
-                    twitter
-                  </SocialButton>
-                  <SocialButton 
-                    onClick={goToSocials('https://discord.gg/FV64sj65aK')}
-                    color='#FFDD00' 
-                    textColor='black'
-                  >
-                    discord
-                  </SocialButton>
-                </>
-              )
-            }
+      </SocialCont>
 
-          </SocialButtons>
-        </DescInnerCont>
-      </DescOuterCont>
+      <InnerCont height={windowHeight}>
+        <DescOuterCont>
+          <DescInnerCont>
+            <TextCont>
+              <H1>Imag3Aid</H1>
+              <H2>57 Photographers<br/>One Cause</H2>
+              <Text>100% of proceeds donated to Ukrainian Emergency Relief Fund</Text>
+            </TextCont>
+
+            <SocialButtons>
+              {
+                timerEnded 
+                ? <MintButton />
+                : (
+                  <>
+                    <SocialButton
+                      onClick={goToSocials('https://twitter.com/Imag3Aid')}
+                      style={{marginRight: 15}} 
+                      color='#0057B7'
+                    >
+                      twitter
+                    </SocialButton>
+                    <SocialButton 
+                      onClick={goToSocials('https://discord.gg/FV64sj65aK')}
+                      color='#FFDD00' 
+                      textColor='black'
+                    >
+                      discord
+                    </SocialButton>
+                  </>
+                )
+              }
+
+            </SocialButtons>
+          </DescInnerCont>
+        </DescOuterCont>
       </InnerCont>
+
+
 
       <InfoCont>
         <TopInfoCont color='#0057B7'>

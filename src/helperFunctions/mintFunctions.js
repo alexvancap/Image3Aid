@@ -133,7 +133,7 @@ export const askContractToMintNft = async (amount, fullSet=false) => {
           // Value is basically how much eth will be needed to mint numberOfNftsToMint
           value: calculatePrice(amount || 1)
         });
-        return {success: `succefly ${amount} ctracts. `, tnx};
+        return {success: `succefly minted ${amount} of nft${amount === 1? '' : 's'}. ${amount === 1 ? 'it' : 'they'}They will arrive in your wallet in a couple of minutes `};
       }
     } else {
       return {error: "Metamask not installed."};

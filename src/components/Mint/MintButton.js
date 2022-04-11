@@ -50,6 +50,12 @@ const ConnectWalletButton = styled(Button)`
   }
 `;
 
+const AmountInput = styled(TextField)`
+  && {
+  margin-top: 10px;
+  }
+`;
+
 const modalCont = {
   position: 'absolute',
   top: '50%',
@@ -111,7 +117,7 @@ const MintButton = () => {
      if(contractRes.error) setErrorMessage(contractRes.error);
      else {
        setErrorMessage('');
-       setSuccessMessage(contractRes.error);
+       setSuccessMessage(contractRes.success);
      }
   }
 
@@ -120,7 +126,7 @@ const MintButton = () => {
     if(contractRes.error) setErrorMessage(contractRes.error);
     else {
       setErrorMessage('');
-      setSuccessMessage(contractRes.error)
+      setSuccessMessage(contractRes.success)
     }
   }
   
@@ -138,11 +144,11 @@ const MintButton = () => {
         >
           Press here to mint!
         </MainButton>
-        <MainButton 
+        {/* <MainButton 
           onClick={toggleModal}
         >
           Opensea
-        </MainButton>
+        </MainButton> */}
       </ButtonWrapper>
 
       <Modal
@@ -168,7 +174,7 @@ const MintButton = () => {
             }
           </ConnectWalletButton>
          <InputWrapper>
-          <TextField label="Amount" placeholder='type amount here...' sx={numberStyle} onChange={handleAmountChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
+          <AmountInput label="Amount" placeholder='type amount here...' sx={numberStyle} onChange={handleAmountChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
          </InputWrapper>
 
          <MintButtonsWrapper>
