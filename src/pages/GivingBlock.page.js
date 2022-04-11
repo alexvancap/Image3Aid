@@ -121,10 +121,7 @@ const GivingBlockPage = () => {
     window.open('https://www.wipiway.com/', '_blank');
   }
 
-  const goToRoute = (route) => () => {
-    console.log('route', route)
-    window.open(route, '_blank');
-  }
+  const goToRoute = (route) => () => window.open(route, '_blank');
   return (
     <Container height={windowHeight}>
       <InfoLine backgroundColor='#0057B7'>
