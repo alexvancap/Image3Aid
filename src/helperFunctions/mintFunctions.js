@@ -1,7 +1,7 @@
 import { ethers, utils } from 'ethers'
 
 const contractABI = require("../contract-abi.json");
-const CONTRACT_ADDRESS = "0xf935f8C6F0fB06e96F0a720e5b1AA9d005C82A41";
+const CONTRACT_ADDRESS = "0x0Cb4D5ACdA357cbD031677b7b0c52D758793665A";
 
 
 export const connectWallet = async () => {
