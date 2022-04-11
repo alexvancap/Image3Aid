@@ -114,26 +114,27 @@ const HomePage = () => {
 
           <SocialButtons>
             {
-              timerEnded 
-              ? <MintButton />
-              : (
-                <>
-                  <SocialButton
-                    onClick={goToSocials('https://twitter.com/Imag3Aid')}
-                    style={{marginRight: 15}} 
-                    color='#0057B7'
-                  >
-                    twitter
-                  </SocialButton>
-                  <SocialButton 
-                    onClick={goToSocials('https://discord.gg/FV64sj65aK')}
-                    color='#FFDD00' 
-                    textColor='black'
-                  >
-                    discord
-                  </SocialButton>
-                </>
-              )
+              // timerEnded 
+              // ? 
+              <MintButton />
+              // : (
+              //   <>
+              //     <SocialButton
+              //       onClick={goToSocials('https://twitter.com/Imag3Aid')}
+              //       style={{marginRight: 15}} 
+              //       color='#0057B7'
+              //     >
+              //       twitter
+              //     </SocialButton>
+              //     <SocialButton 
+              //       onClick={goToSocials('https://discord.gg/FV64sj65aK')}
+              //       color='#FFDD00' 
+              //       textColor='black'
+              //     >
+              //       discord
+              //     </SocialButton>
+              //   </>
+              // )
             }
 
           </SocialButtons>
