@@ -73,6 +73,7 @@ const GivingBlockWrapper = styled.div`
 const GivingBlockShouout = styled(H2)`
   text-align: center;
   margin-top: 10px;
+  font-size: 18px;
 `;
 
 const GivingBlockLogo = styled.img`
@@ -86,7 +87,7 @@ const GivingBlockLogo = styled.img`
 `;
 
 const LetsDoThis = styled(H1)`
-  font-size: 50px;
+  font-size: 45px;
   margin: 30px 0 30px 0;
   text-align: center;
 `;
@@ -100,9 +101,9 @@ const SocialCont = styled.div`
 
 const PartnerTitle = styled(H1)`
   text-align: center;
-  margin-bottom: 20px;
-  margin-top: 40px;
-  font-size: 35px;
+  margin-bottom: 25px;
+  margin-top: 50px;
+  font-size: 32px;
   @media only screen and (max-width: 700px){
     margin-top: 40px;
   }
@@ -114,6 +115,10 @@ const GivingBlockPage = () => {
 
   const goToGivingBlock = () => {
     window.open('https://thegivingblock.com/campaigns/ukraine-emergency-response-fund/', '_blank');
+  }
+
+  const goToWipiway = () => {
+    window.open('https://www.wipiway.com/', '_blank');
   }
 
   const goToRoute = (route) => () => {
@@ -132,10 +137,13 @@ const GivingBlockPage = () => {
         <FlexCont height={windowHeight / 2}>
           <Faq />
           <GivingBlockWrapper height={windowHeight / 2}>
-          <PartnerTitle>DONATION PARTNER</PartnerTitle>
-
+            <PartnerTitle>DONATION PARTNER</PartnerTitle>
             <GivingBlockLogo onClick={goToGivingBlock} src='/logos/TGBLogo.png' alt='Giving block logo'/>
             <GivingBlockShouout>On-chain donation made possible by The Giving Block</GivingBlockShouout>
+
+            <PartnerTitle>WEB3 TECH PARTNER</PartnerTitle>
+            <GivingBlockLogo onClick={goToWipiway} src='/logos/wipiway-logo.png' alt='Wipiway logo'/>
+            <GivingBlockShouout>Ethereum SmartContract deployed with love by Wipiway</GivingBlockShouout>
             <SocialCont>
               <LetsDoThis>Lets do this!</LetsDoThis>
               <SocialButton onClick={goToRoute('https://twitter.com/Imag3Aid')} style={{width: '75px'}} color='#0057B7'>Twitter</SocialButton>
