@@ -5,7 +5,7 @@ import moment from 'moment';
 import useWindowDimensions from '../hooks/useWindowDimensions';
 import { useCountdown } from "rooks";
 
-import { H1, H2, H3, Text, SocialButton } from '../framework';
+import { H1, H2, H3, Text } from '../framework';
 import CharityScroller from '../components/CharityScroller';
 import MintButton from './../components/Mint/MintButton';
 
@@ -95,9 +95,6 @@ const HomePage = () => {
       if(!timerEnded) setTimerEnded(true)
     },
   });
-
-  const goToSocials = (route) => () => 
-    window.open(route, '_blank');
 
   const formattedTime = moment(timeLeft).format('DD:h:m:s');
 
