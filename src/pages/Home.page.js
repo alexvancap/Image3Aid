@@ -179,8 +179,7 @@ const HomePage = () => {
           </InfoLine>
           <InfoLine width='20%'>
             <H3>Countdown</H3>
-            {formattedTime === 'Invalid date' && 'Timer ended'}
-            {formattedTime !== 'Invalid date' && formattedTime}
+            Timer ended
           </InfoLine>
           <InfoLine width='40%'>
             10 mints / wallet
