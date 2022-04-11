@@ -86,7 +86,8 @@ const HomePage = () => {
   const { height: windowHeight } = useWindowDimensions();
   const [ timeLeft, setTimeLeft ] = useState('');
   const [ timerEnded, setTimerEnded ] = useState(false);
-  const mintingStartTime = new Date('2022-04-09T18:00:00')
+  const mintingStartTime = new Date(Date.UTC(2022, 3, '11', '18'));
+
   useCountdown(mintingStartTime, {
     interval: 1000,
     onDown: setTimeLeft,
@@ -114,11 +115,8 @@ const HomePage = () => {
           <SocialButtons>
             {
               timerEnded 
-              ? (
-
-                <MintButton />
-
-              ) : (
+              ? <MintButton />
+              : (
                 <>
                   <SocialButton
                     onClick={goToSocials('https://twitter.com/Imag3Aid')}

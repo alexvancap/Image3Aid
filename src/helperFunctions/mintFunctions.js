@@ -133,13 +133,12 @@ export const askContractToMintNft = async (amount, fullSet=false) => {
           // Value is basically how much eth will be needed to mint numberOfNftsToMint
           value: calculatePrice(amount || 1)
         });
-        return {success: `minting ${amount} contracts: `, tnx};
+        return {success: `succefly ${amount} ctracts. `, tnx};
       }
     } else {
       return {error: "Metamask not installed."};
     }
   } catch (error) {
-    console.log('errroooor', error)
     if(error.code === 'INSUFFICIENT_FUNDS'){
       return {error: "Insufficient funds in wallet"}
     }

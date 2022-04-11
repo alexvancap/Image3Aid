@@ -88,6 +88,7 @@ const MintButton = () => {
   const [modalIsOpen, setModalOpen] = useState(false);
   const [amount, setNewAmount] = useState('1');
   const [ errorMessage, setErrorMessage] = useState('');
+  const [ successMessage, setSuccessMessage ] = useState('');
 
   const connectWalletPressed = async () => {
     const walletResponse = await connectWallet()
@@ -98,11 +99,20 @@ const MintButton = () => {
 
   const onMintPressed = async () => {
      const contractRes = await askContractToMintNft(amount);
-     if(contractRes.error) setErrorMessage(contractRes.error)
+     if(contractRes.error) setErrorMessage(contractRes.error);
+     else {
+       setErrorMessage('');
+       setSuccessMessage(contractRes.error);
+     }
   }
 
   const onFullSetPressed = async () => {
-    await askContractToMintNft(amount, true);
+    const contractRes = await askContractToMintNft(amount, true);
+    if(contractRes.error) setErrorMessage(contractRes.error);
+    else {
+      setErrorMessage('');
+      setSuccessMessage(contractRes.error)
+    }
   }
   
   const handleAmountChange = (newAmount) => setNewAmount(newAmount.target.value)
@@ -135,6 +145,8 @@ const MintButton = () => {
       <ModalOuter>
         <Box sx={modalCont}>
         {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+        {successMessage && <Alert severity="success">{successMessage}</Alert>}
+
         
           <ConnectWalletButton 
             variant="outlined" 
