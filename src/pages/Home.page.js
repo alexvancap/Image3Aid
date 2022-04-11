@@ -91,22 +91,9 @@ const SocialCont = styled.div`
 
 const HomePage = () => {
   const { height: windowHeight } = useWindowDimensions();
-  const [ timeLeft, setTimeLeft ] = useState('');
-  const [ timerEnded, setTimerEnded ] = useState(true);
-  const mintingStartTime = new Date(2022, 4, 11, 17);
-
-  useCountdown(mintingStartTime, {
-    interval: 1000,
-    onDown: setTimeLeft,
-    onEnd: () => {
-      if(!timerEnded) setTimerEnded(true)
-    },
-  });
 
   const goToSocials = (route) => () => 
     window.open(route, '_blank');
-
-  const formattedTime = moment(timeLeft).format('m:s');
 
   return (
     <Container height={windowHeight || 0}>
@@ -139,7 +126,7 @@ const HomePage = () => {
 
             <SocialButtons>
               {
-                timerEnded 
+                true 
                 ? <MintButton />
                 : (
                   <>
