@@ -5,7 +5,7 @@ import moment from 'moment';
 import useWindowDimensions from '../hooks/useWindowDimensions';
 import { useCountdown } from "rooks";
 
-import { H1, H2, H3, Text } from '../framework';
+import { H1, H2, H3, Text, SocialButton } from '../framework';
 import CharityScroller from '../components/CharityScroller';
 import MintButton from './../components/Mint/MintButton';
 
@@ -15,7 +15,6 @@ const Container = styled.div`
   @media only screen and (max-width: 1000px){
     height: 600px;
   }
-  
 `;
 
 const InnerCont = styled.div`
@@ -86,7 +85,7 @@ const HomePage = () => {
   const { height: windowHeight } = useWindowDimensions();
   const [ timeLeft, setTimeLeft ] = useState('');
   const [ timerEnded, setTimerEnded ] = useState(false);
-  const mintingStartTime = new Date(Date.UTC(2022, 3, '11', '18'));
+  const mintingStartTime = new Date(2022, 4, 11, 17);
 
   useCountdown(mintingStartTime, {
     interval: 1000,
@@ -96,7 +95,10 @@ const HomePage = () => {
     },
   });
 
-  const formattedTime = moment(timeLeft).format('DD:h:m:s');
+  const goToSocials = (route) => () => 
+    window.open(route, '_blank');
+
+  const formattedTime = moment(timeLeft).format('m:s');
 
   return (
     <Container height={windowHeight || 0}>
@@ -111,27 +113,26 @@ const HomePage = () => {
 
           <SocialButtons>
             {
-              // timerEnded 
-              // ? 
-              <MintButton />
-              // : (
-              //   <>
-              //     <SocialButton
-              //       onClick={goToSocials('https://twitter.com/Imag3Aid')}
-              //       style={{marginRight: 15}} 
-              //       color='#0057B7'
-              //     >
-              //       twitter
-              //     </SocialButton>
-              //     <SocialButton 
-              //       onClick={goToSocials('https://discord.gg/FV64sj65aK')}
-              //       color='#FFDD00' 
-              //       textColor='black'
-              //     >
-              //       discord
-              //     </SocialButton>
-              //   </>
-              // )
+              timerEnded 
+              ? <MintButton />
+              : (
+                <>
+                  <SocialButton
+                    onClick={goToSocials('https://twitter.com/Imag3Aid')}
+                    style={{marginRight: 15}} 
+                    color='#0057B7'
+                  >
+                    twitter
+                  </SocialButton>
+                  <SocialButton 
+                    onClick={goToSocials('https://discord.gg/FV64sj65aK')}
+                    color='#FFDD00' 
+                    textColor='black'
+                  >
+                    discord
+                  </SocialButton>
+                </>
+              )
             }
 
           </SocialButtons>
