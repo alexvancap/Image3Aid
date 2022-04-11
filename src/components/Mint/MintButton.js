@@ -82,6 +82,15 @@ const InputWrapper = styled.div`
   margin: 0 auto;
 `;
 
+const OrText = styled.p`
+  text-align: center;
+  margin-bottom: 0;
+`
+
+const PriceText = styled.p`
+text-align: center;
+margin-bottom: 0;
+`
 
 const MintButton = () => {
   const [walletAdress, setWallet] = useState(null);
@@ -169,6 +178,7 @@ const MintButton = () => {
             >
               mint
             </ConnectWalletButton>
+            <OrText>OR</OrText>
             <ConnectWalletButton 
               variant="outlined" 
               onClick={onFullSetPressed}
@@ -176,6 +186,7 @@ const MintButton = () => {
               mint full set (whitelist only)
             </ConnectWalletButton>
          </MintButtonsWrapper>
+          <PriceText>2.85 ETH required for full Set</PriceText> 
         </Box>
       </ModalOuter>
       
