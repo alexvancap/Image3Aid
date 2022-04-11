@@ -10,6 +10,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Alert from '@mui/material/Alert';
 
+import { Text } from './../../framework';
+
 const MainButton = styled.div`
   border-radius: 20px;
   background-color: ${props => props.color || '#FFDD00'};
@@ -52,7 +54,7 @@ const ConnectWalletButton = styled(Button)`
 
 const AmountInput = styled(TextField)`
   && {
-  margin-top: 10px;
+  margin-top: -10px;
   }
 `;
 
@@ -88,15 +90,20 @@ const InputWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const OrText = styled.p`
+const OrText = styled(Text)`
   text-align: center;
-  margin-bottom: 0;
+  margin-top: 20px;
 `
 
-const PriceText = styled.p`
-text-align: center;
-margin-bottom: 0;
+const PriceText = styled(Text)`
+  text-align: center;
+  margin-top: 10px;
 `
+
+const StepLabel = styled(Text)`
+  text-align: center;
+  font-weight: 500;
+`;
 
 const MintButton = () => {
   const [walletAdress, setWallet] = useState(null);
@@ -163,6 +170,7 @@ const MintButton = () => {
         {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
         {successMessage && <Alert severity="success">{successMessage}</Alert>}
 
+          <StepLabel>Step 1</StepLabel>
         
           <ConnectWalletButton 
             variant="outlined" 
@@ -174,9 +182,13 @@ const MintButton = () => {
                 : 'Connect wallet'
             }
           </ConnectWalletButton>
+          <StepLabel style={{marginTop: 20}}>Step 2</StepLabel>
+
          <InputWrapper>
-          <AmountInput label="Amount" placeholder='type amount here...' sx={numberStyle} onChange={handleAmountChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
+          <AmountInput label="Amount" placeholder='type amount here...' helperText="How many nfts do you want to mint?" sx={numberStyle} onChange={handleAmountChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
          </InputWrapper>
+
+         <StepLabel style={{marginTop: 20}}>Step 3</StepLabel>
 
          <MintButtonsWrapper>
           <ConnectWalletButton 
@@ -185,6 +197,8 @@ const MintButton = () => {
             >
               mint
             </ConnectWalletButton>
+          <PriceText>0.05eth / image</PriceText> 
+
             <OrText>OR</OrText>
             <ConnectWalletButton 
               variant="outlined" 
@@ -193,7 +207,7 @@ const MintButton = () => {
               mint full set (whitelist only)
             </ConnectWalletButton>
          </MintButtonsWrapper>
-          <PriceText>2.85 ETH required for full Set</PriceText> 
+          <PriceText>2.85 ETH required for full set</PriceText> 
         </Box>
       </ModalOuter>
       
