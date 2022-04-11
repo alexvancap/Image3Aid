@@ -15,7 +15,6 @@ const Container = styled.div`
   @media only screen and (max-width: 1000px){
     height: 600px;
   }
-  
 `;
 
 const InnerCont = styled.div`
@@ -86,7 +85,7 @@ const HomePage = () => {
   const { height: windowHeight } = useWindowDimensions();
   const [ timeLeft, setTimeLeft ] = useState('');
   const [ timerEnded, setTimerEnded ] = useState(false);
-  const mintingStartTime = new Date(Date.UTC(2022, 3, 11, 18));
+  const mintingStartTime = new Date(Date.UTC(2022, 3, '11', 15));
 
   useCountdown(mintingStartTime, {
     interval: 1000,
@@ -99,7 +98,7 @@ const HomePage = () => {
   const goToSocials = (route) => () => 
     window.open(route, '_blank');
 
-  const formattedTime = moment(timeLeft).format('DD:h:m:s');
+  const formattedTime = moment(timeLeft).format('h:m:s');
 
   return (
     <Container height={windowHeight || 0}>
